@@ -1,0 +1,2169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مِحراب الإنشاد والمقامات | منصة التدريب الصوتي الخاصة</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Amiri, Aref Ruqaa, Tajawal, Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        amiri: ['Amiri', 'serif'],
+                        ruqaa: ['Aref Ruqaa', 'serif'],
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            850: '#064e3b',
+                            950: '#022c22',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #faf8f5;
+            color: #1c1917;
+            background-image: radial-gradient(#e7e5e4 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .poetry-font {
+            font-family: 'Amiri', serif;
+            line-height: 2.35;
+        }
+
+        .ruqaa-font {
+            font-family: 'Aref Ruqaa', serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f5f5f4; }
+        ::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
+
+        /* Karaoke Active Word Highlight */
+        .word-segment {
+            display: inline-block;
+            padding: 3px 7px;
+            border-radius: 10px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .word-segment.active-singing {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #92400e;
+            transform: scale(1.07);
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.28);
+            font-weight: 700;
+            border-bottom: 3px solid #d97706;
+        }
+
+        .word-segment.active-madd {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            color: #065f46;
+            border-bottom: 3px solid #059669;
+        }
+
+        /* Madd Visual Badges inline */
+        .madd-highlight {
+            color: #b45309;
+            background-color: rgba(251, 191, 36, 0.16);
+            padding: 0 4px;
+            border-radius: 4px;
+            border-bottom: 2px dashed #d97706;
+        }
+
+        .pause-short {
+            color: #0284c7;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            font-size: 0.85em;
+            margin: 0 4px;
+            background: #e0f2fe;
+            padding: 0 5px;
+            border-radius: 4px;
+        }
+
+        .pause-full {
+            color: #be123c;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            font-size: 0.85em;
+            margin: 0 6px;
+            background: #ffe4e6;
+            padding: 0 6px;
+            border-radius: 4px;
+        }
+
+        .calm-down {
+            color: #059669;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.85em;
+            margin: 0 4px;
+            background: #d1fae5;
+            padding: 0 6px;
+            border-radius: 4px;
+        }
+
+        /* Print / PDF Styles */
+        @media print {
+            body {
+                background: white !important;
+                background-image: none !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            #login-gate {
+                display: none !important;
+            }
+            #app-wrapper {
+                display: flex !important;
+            }
+            .stanza-card {
+                break-inside: avoid;
+                border: 1px solid #cbd5e1 !important;
+                box-shadow: none !important;
+                margin-bottom: 18px !important;
+                page-break-inside: avoid;
+            }
+            .analysis-drawer {
+                display: block !important;
+                max-height: none !important;
+                opacity: 1 !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- ===================================================================== -->
+    <!-- 1. PRIVATE ACCESS GATE (بوابة الدخول الخاصة للمنشدين)               -->
+    <!-- ===================================================================== -->
+    <div id="login-gate" class="fixed inset-0 z-50 bg-gradient-to-br from-emerald-950 via-emerald-900 to-stone-950 flex items-center justify-center p-4 overflow-y-auto">
+        <div class="max-w-md w-full bg-[#faf8f5] rounded-3xl shadow-2xl border-2 border-amber-500/70 overflow-hidden my-auto">
+            <!-- Decorative Top Header -->
+            <div class="bg-gradient-to-l from-emerald-950 to-emerald-900 px-6 py-7 text-center border-b-4 border-amber-500 relative">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-500/20 border border-amber-400/60 flex items-center justify-center text-amber-300 text-3xl shadow-inner mb-3">
+                    <i class="fa-solid fa-mosque"></i>
+                </div>
+                <h1 class="ruqaa-font text-3xl text-amber-300 tracking-wide">مِحراب الإنشاد والمقامات</h1>
+                <p class="text-xs text-emerald-200 mt-1.5 font-cairo">بوابة الدخول الخاصة بأعضاء فرقة الإنشاد والتدريب الصوتي</p>
+            </div>
+
+            <!-- Login Form -->
+            <form onsubmit="handleLogin(event)" class="p-6 sm:p-8 space-y-5">
+                <div id="login-error" class="hidden bg-rose-50 border border-rose-300 text-rose-800 px-4 py-3 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-circle-exclamation text-rose-600 text-base"></i>
+                    <span>اسم المستخدم أو كلمة المرور غير صحيحة. يرجى التأكد من المشرف.</span>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-cairo font-bold text-stone-700 mb-1.5">
+                        <i class="fa-solid fa-user text-emerald-700 ml-1"></i> اسم المستخدم الموحد (Username)
+                    </label>
+                    <input type="text" id="login-username" required autocomplete="username" placeholder="أدخل اسم المستخدم..."
+                        class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 font-cairo text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition text-left" dir="ltr">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-cairo font-bold text-stone-700 mb-1.5">
+                        <i class="fa-solid fa-key text-amber-600 ml-1"></i> كلمة المرور (Password)
+                    </label>
+                    <div class="relative">
+                        <input type="password" id="login-password" required autocomplete="current-password" placeholder="••••••••"
+                            class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 font-cairo text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition text-left" dir="ltr">
+                        <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-3 flex items-center text-stone-400 hover:text-stone-700">
+                            <i class="fa-solid fa-eye" id="pass-eye-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 rounded-xl font-cairo font-extrabold text-sm bg-gradient-to-l from-emerald-900 to-emerald-800 hover:from-emerald-800 hover:to-emerald-700 text-amber-100 shadow-lg shadow-emerald-950/30 border border-amber-500/40 transition transform active:scale-98 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-lock-open text-amber-400"></i>
+                    <span>دخول إلى منصة التدريب</span>
+                </button>
+
+                <!-- Default Credentials Helper Box for Admin/Testing -->
+                <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-3 text-center text-xs text-stone-600">
+                    <span class="font-cairo font-bold text-amber-900 block mb-1">بيانات الدخول الافتراضية للمجموعة:</span>
+                    <div class="flex items-center justify-center gap-4 font-mono text-xs text-stone-800" dir="ltr">
+                        <span>User: <strong class="text-emerald-900 select-all">munshid</strong></span>
+                        <span>Pass: <strong class="text-emerald-900 select-all">maqam2026</strong></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- 2. MAIN APPLICATION WRAPPER (HIDDEN UNTIL AUTHENTICATED)              -->
+    <!-- ===================================================================== -->
+    <div id="app-wrapper" class="hidden min-h-screen flex-col">
+
+        <!-- Header Banner -->
+        <header class="bg-gradient-to-l from-emerald-950 via-emerald-900 to-teal-900 text-white shadow-xl border-b-4 border-amber-500 sticky top-0 z-40 no-print">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+                <div class="flex flex-col xl:flex-row items-center justify-between gap-3">
+                    <!-- Logo & Title -->
+                    <div class="flex items-center gap-3 text-center sm:text-right">
+                        <div class="w-11 h-11 rounded-2xl bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-300 text-xl shadow-inner shrink-0">
+                            <i class="fa-solid fa-microphone-lines"></i>
+                        </div>
+                        <div>
+                            <h1 class="ruqaa-font text-2xl sm:text-3xl text-amber-200 leading-none">
+                                مِحراب الإنشاد والمقامات
+                            </h1>
+                            <p class="text-xs text-emerald-200 mt-1 font-cairo">
+                                منصة التدريب الصوتي الخاص وضبط المدود والوقفات للمنشدين
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Global Controls -->
+                    <div class="flex flex-wrap items-center justify-center gap-2">
+                        <!-- Speed Selector -->
+                        <div class="flex items-center bg-emerald-950/70 rounded-xl p-1 border border-emerald-700/60">
+                            <span class="text-xs text-emerald-300 px-2 hidden sm:inline"><i class="fa-solid fa-gauge-high ml-1"></i>السرعة:</span>
+                            <button onclick="setTempo(0.65)" id="speed-slow" class="speed-btn px-2.5 py-1 rounded-lg text-xs font-bold transition bg-amber-500 text-emerald-950">بطيء</button>
+                            <button onclick="setTempo(1.0)" id="speed-med" class="speed-btn px-2.5 py-1 rounded-lg text-xs font-bold transition text-emerald-100 hover:bg-emerald-800">متوسط</button>
+                            <button onclick="setTempo(1.3)" id="speed-fast" class="speed-btn px-2.5 py-1 rounded-lg text-xs font-bold transition text-emerald-100 hover:bg-emerald-800">سريع</button>
+                        </div>
+
+                        <!-- Sound Toggle -->
+                        <button onclick="toggleSound()" id="sound-toggle-btn" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-emerald-800 hover:bg-emerald-700 border border-emerald-600 transition text-amber-200">
+                            <i class="fa-solid fa-volume-high" id="sound-icon"></i>
+                            <span id="sound-label">النغمة: مفعّلة</span>
+                        </button>
+
+                        <!-- Toggle All Explanations -->
+                        <button onclick="toggleAllDetails()" id="toggle-details-btn" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-stone-800 hover:bg-stone-700 border border-stone-600 transition text-white">
+                            <i class="fa-solid fa-book-open"></i>
+                            <span id="details-label">إخفاء الشروحات</span>
+                        </button>
+
+                        <!-- Print / Export PDF -->
+                        <button onclick="printPoemPDF()" class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-emerald-950 shadow-md transition">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <span>تصدير PDF</span>
+                        </button>
+
+                        <!-- Admin Credentials / Export Settings -->
+                        <button onclick="openAdminModal()" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-emerald-950 hover:bg-emerald-800 border border-emerald-700 text-emerald-200 transition" title="إعدادات كلمة المرور وتصدير الموقع">
+                            <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                            <span class="hidden md:inline">إعدادات المشرف</span>
+                        </button>
+
+                        <!-- Logout / Lock -->
+                        <button onclick="logoutGate()" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-rose-900/80 hover:bg-rose-800 border border-rose-700 text-rose-100 transition" title="قفل الموقع وتسجيل الخروج">
+                            <i class="fa-solid fa-lock"></i>
+                            <span class="hidden sm:inline">قفل</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Print-only Header -->
+        <div class="hidden print-only text-center border-b-2 border-stone-800 pb-4 mb-6 pt-4 px-6">
+            <h1 class="font-cairo font-bold text-2xl">كراسة التدريب الصوتي والإنشادي - ضبط التشكيل والمدود والوقفات</h1>
+            <p id="print-poem-subtitle" class="text-sm text-stone-600 mt-1"></p>
+        </div>
+
+        <!-- Main Container -->
+        <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            
+            <!-- Poem Navigation Tabs + Add New Poem Button -->
+            <div class="mb-6 no-print">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span class="text-xs font-bold text-stone-600 uppercase tracking-wider">
+                        <i class="fa-solid fa-scroll ml-1 text-amber-600"></i> اختر القصيدة أو الموشح للتدريب (أو أضف قصيدة جديدة):
+                    </span>
+                    <button onclick="openAnalyzerModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl font-cairo font-bold text-xs sm:text-sm bg-gradient-to-l from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-emerald-950 shadow-md transition transform active:scale-95">
+                        <i class="fa-solid fa-plus-circle text-base"></i>
+                        <span>إضافة / تحليل قصيدة جديدة</span>
+                    </button>
+                </div>
+
+                <!-- Dynamic Tabs Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" id="poem-tabs">
+                    <!-- Tabs injected by JS -->
+                </div>
+            </div>
+
+            <!-- Legend & Poem Overview Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-stone-200 p-4 sm:p-5 mb-6">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-stone-100 pb-4 mb-4">
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span id="poem-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">قصيدة مديح</span>
+                            <span id="poem-maqam" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900"><i class="fa-solid fa-music ml-1"></i> المقام المقترح: البياتي</span>
+                            <span id="poem-meter" class="px-3 py-1 rounded-full text-xs font-bold bg-stone-100 text-stone-700"><i class="fa-solid fa-drum ml-1"></i> الإيقاع</span>
+                            <button id="delete-custom-poem-btn" onclick="deleteCurrentCustomPoem()" class="hidden px-3 py-1 rounded-full text-xs font-bold bg-rose-100 hover:bg-rose-200 text-rose-800 transition no-print">
+                                <i class="fa-solid fa-trash-can ml-1"></i> حذف هذه القصيدة المضافة
+                            </button>
+                        </div>
+                        <h2 id="poem-title" class="font-cairo font-extrabold text-xl sm:text-2xl text-stone-900 mt-2"></h2>
+                        <p id="poem-intro" class="text-sm text-stone-600 mt-1 leading-relaxed"></p>
+                    </div>
+                    
+                    <!-- Play Entire Poem Sequentially Button -->
+                    <div class="flex items-center gap-2 shrink-0 no-print">
+                        <button onclick="playFullPoem()" id="play-all-btn" class="flex items-center gap-2 px-5 py-3 rounded-xl font-cairo font-bold text-sm bg-emerald-800 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-900/20 transition transform active:scale-95">
+                            <i class="fa-solid fa-play"></i>
+                            <span>تشغيل القصيدة كاملة بالتتابع</span>
+                        </button>
+                        <button onclick="stopAllPlayback()" id="stop-all-btn" class="hidden flex items-center gap-2 px-4 py-3 rounded-xl font-cairo font-bold text-sm bg-rose-600 hover:bg-rose-500 text-white shadow-lg transition">
+                            <i class="fa-solid fa-stop"></i>
+                            <span>إيقاف</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visual Symbols Key -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs bg-stone-50 p-3 rounded-xl border border-stone-200/70">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 border-b-2 border-dashed border-amber-600 font-bold">ـــــ</span>
+                        <span class="text-stone-700 font-medium">موضع مدّ وإشباع (2 - 6 حركات)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="pause-short">|</span>
+                        <span class="text-stone-700 font-medium">وقفة قصيرة (خطف نفس سريع)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="pause-full">||</span>
+                        <span class="text-stone-700 font-medium">وقفة تامة (تنفس كامل وقفلة)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="calm-down">~ تهدئة</span>
+                        <span class="text-stone-700 font-medium">تدرج صوتي وخفض الطبقة (قرار)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stanzas Container -->
+            <div id="stanzas-container" class="space-y-8">
+                <!-- Stanza cards dynamically rendered here -->
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-stone-900 text-stone-400 py-6 mt-12 border-t border-stone-800 no-print">
+            <div class="max-w-7xl mx-auto px-4 text-center text-xs sm:text-sm">
+                <p class="font-cairo text-stone-300 font-semibold mb-1">مِحراب الإنشاد والمقامات — أداة تدريبية تفاعلية خاصة للمنشدين</p>
+                <p>تم ضبط التشكيل ومواضع المدود والوقفات وفق قواعد الأداء الإنشادي العربي الأصيل والمقامات الشرقية.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- 3. SMART POEM ANALYZER MODAL (محلل القصائد الذكي التلقائي)            -->
+    <!-- ===================================================================== -->
+    <div id="analyzer-modal" class="fixed inset-0 z-50 hidden bg-stone-950/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto no-print">
+        <div class="bg-white rounded-3xl max-w-4xl w-full shadow-2xl border-2 border-amber-500/60 overflow-hidden my-auto max-h-[92vh] flex flex-col">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-l from-emerald-950 to-emerald-900 px-6 py-4 text-white flex items-center justify-between border-b-2 border-amber-500 shrink-0">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-wand-magic-sparkles text-amber-400 text-xl"></i>
+                    <div>
+                        <h3 class="font-cairo font-bold text-lg">محلل القصائد الذكي وتوليد الشارت الصوتي</h3>
+                        <p class="text-xs text-emerald-200">الصق أي قصيدة وسيقوم المحرك باستخراج المدود وحركاتها والوقفات وبناء الشارت الصوتي تلقائياً</p>
+                    </div>
+                </div>
+                <button onclick="closeAnalyzerModal()" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 overflow-y-auto space-y-5 flex-grow">
+                <!-- Metadata Inputs -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-cairo font-bold text-stone-700 mb-1">عنوان القصيدة *</label>
+                        <input type="text" id="new-poem-title" placeholder="مثال: طلع البدر علينا..."
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-cairo font-bold text-stone-700 mb-1">المقام المقترح</label>
+                        <select id="new-poem-maqam" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                            <option value="مقام البياتي (خشوع وعذوبة)">مقام البياتي (خشوع وعذوبة)</option>
+                            <option value="مقام الرست (فخامة وبهجة)">مقام الرست (فخامة وبهجة)</option>
+                            <option value="مقام الحجاز (جلال وروحانية)">مقام الحجاز (جلال وروحانية)</option>
+                            <option value="مقام الصبا (شجن وتضرع)">مقام الصبا (شجن وتضرع)</option>
+                            <option value="مقام السيكاه (طرب ووجد)">مقام السيكاه (طرب ووجد)</option>
+                            <option value="مقام العجم (إشراق وقوة)">مقام العجم (إشراق وقوة)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-cairo font-bold text-stone-700 mb-1">الإيقاع / البحر</label>
+                        <input type="text" id="new-poem-meter" value="إنشاد موزون / إرسال حر"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                    </div>
+                </div>
+
+                <!-- Poem Textarea -->
+                <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <label class="text-xs font-cairo font-bold text-stone-700">نص القصيدة (اكتب كل بيت في سطر، وافصل بين الصدر والعجز بـ / أو مسافتين أو اجعل كل شطر في سطر):</label>
+                        <button type="button" onclick="fillSamplePoem()" class="text-xs text-emerald-700 hover:underline font-bold">
+                            <i class="fa-solid fa-flask ml-1"></i> تعبئة مثال تجريبي
+                        </button>
+                    </div>
+                    <textarea id="new-poem-text" rows="6" placeholder="الصق أبيات القصيدة هنا...
+مثال:
+يَا إِمَامَ الرُّسْلِ يَا سَنَدِي / أَنْتَ بَابُ اللَّهِ مُعْتَمَدِي
+فَبِدُنْيَايَ وَآخِرَتِي / يَا رَسُولَ اللَّهِ خُذْ بِيَدِي"
+                        class="w-full p-4 rounded-2xl border border-stone-300 poetry-font text-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-amber-50/20"></textarea>
+                </div>
+
+                <!-- Analyze Trigger Button -->
+                <div class="flex justify-center">
+                    <button type="button" onclick="runSmartAnalyzer()" class="px-6 py-3 rounded-xl font-cairo font-extrabold text-sm bg-emerald-800 hover:bg-emerald-700 text-white shadow-lg transition flex items-center gap-2">
+                        <i class="fa-solid fa-gears text-amber-400"></i>
+                        <span>تحليل وتوليد الشارت الصوتي الآن</span>
+                    </button>
+                </div>
+
+                <!-- Interactive Confirmation & Preview Box (Appears after analysis) -->
+                <div id="analyzer-result-box" class="hidden space-y-4 border-t-2 border-dashed border-stone-200 pt-5">
+                    <!-- Interactive Save Prompt Banner -->
+                    <div class="bg-gradient-to-l from-amber-50 to-emerald-50 border-2 border-amber-400 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-question text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-cairo font-extrabold text-base text-stone-900">هل تريد حفظ وإضافة هذه القصيدة إلى قائمة القصائد الرئيسية في الموقع؟</h4>
+                                <p class="text-xs text-stone-600 mt-0.5">تم تحليل <strong id="analyzed-stanza-count" class="text-emerald-800">0</strong> أبيات واستخراج المدود والوقفات والشارت الصوتي بنجاح.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button onclick="saveAnalyzedPoemToSite()" class="px-5 py-2.5 rounded-xl font-cairo font-bold text-xs sm:text-sm bg-emerald-800 hover:bg-emerald-700 text-white shadow-md transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-check"></i>
+                                <span>نعم، أضفها إلى قصائد الموقع</span>
+                            </button>
+                            <button onclick="closeAnalyzerModal()" class="px-3.5 py-2.5 rounded-xl font-cairo font-bold text-xs bg-stone-200 hover:bg-stone-300 text-stone-700 transition">
+                                إلغاء
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Preview of Analyzed Stanzas -->
+                    <div id="analyzer-preview-list" class="space-y-3 max-h-60 overflow-y-auto p-3 bg-stone-50 rounded-2xl border border-stone-200">
+                        <!-- Preview items injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- 4. ADMIN SETTINGS & HOSTING EXPORT MODAL (إعدادات المشرف والاستضافة)  -->
+    <!-- ===================================================================== -->
+    <div id="admin-modal" class="fixed inset-0 z-50 hidden bg-stone-950/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto no-print">
+        <div class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl border-2 border-emerald-700 overflow-hidden my-auto">
+            <div class="bg-emerald-950 px-6 py-4 text-white flex items-center justify-between border-b-2 border-amber-500">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-amber-400 text-lg"></i>
+                    <h3 class="font-cairo font-bold text-base">إعدادات الخصوصية وكلمة المرور الموحدة</h3>
+                </div>
+                <button onclick="closeAdminModal()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 space-y-5 text-sm">
+                <!-- Change Credentials Form -->
+                <div class="bg-stone-50 p-4 rounded-2xl border border-stone-200 space-y-3">
+                    <h4 class="font-cairo font-bold text-stone-900">تعديل بيانات الدخول الموحدة للمنشدين:</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold text-stone-600 mb-1">اسم المستخدم الجديد</label>
+                            <input type="text" id="admin-new-user" class="w-full px-3 py-2 rounded-xl border border-stone-300 text-left font-mono text-sm" dir="ltr">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-stone-600 mb-1">كلمة المرور الجديدة</label>
+                            <input type="text" id="admin-new-pass" class="w-full px-3 py-2 rounded-xl border border-stone-300 text-left font-mono text-sm" dir="ltr">
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between pt-1">
+                        <span id="admin-save-msg" class="text-xs font-bold text-emerald-700 hidden"><i class="fa-solid fa-circle-check ml-1"></i> تم تحديث بيانات الدخول بنجاح!</span>
+                        <button onclick="updateCredentials()" class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-cairo font-bold text-xs transition mr-auto">
+                            حفظ بيانات الدخول
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Download Standalone HTML File with All Added Poems & New Password -->
+                <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-200 space-y-2">
+                    <h4 class="font-cairo font-bold text-amber-950 flex items-center gap-1.5">
+                        <i class="fa-solid fa-cloud-arrow-up text-amber-600"></i>
+                        تصدير نسخة الموقع المحدثة لرفعها على الاستضافة المجانية
+                    </h4>
+                    <p class="text-xs text-stone-700 leading-relaxed">
+                        عند إضافة قصائد جديدة أو تغيير كلمة المرور، يمكنك تحميل ملف <code class="bg-white px-1.5 py-0.5 rounded border text-emerald-900 font-bold">index.html</code> جاهزاً ومُدمجاً به كل قصائدك وكلمة مرورك الجديدة لرفعه مباشرة على (Netlify Drop أو Vercel أو GitHub Pages) ومشاركة الرابط مع المنشدين.
+                    </p>
+                    <button onclick="downloadUpdatedHTML()" class="mt-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-emerald-950 font-cairo font-extrabold text-xs shadow transition flex items-center gap-2">
+                        <i class="fa-solid fa-download"></i>
+                        <span>تحميل ملف index.html المحدّث بالكامل</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- 5. JAVASCRIPT: POEMS DATABASE, AUTHENTICATION, ANALYZER & AUDIO       -->
+    <!-- ===================================================================== -->
+    <script>
+        // -------------------------------------------------------------------------
+        // A. DEFAULT CREDENTIALS & AUTHENTICATION LOGIC
+        // -------------------------------------------------------------------------
+        const DEFAULT_AUTH = {
+            username: 'munshid',
+            password: 'maqam2026'
+        };
+
+        function getStoredAuth() {
+            try {
+                const saved = localStorage.getItem('mihrab_auth_creds');
+                if (saved) return JSON.parse(saved);
+            } catch (e) {}
+            return DEFAULT_AUTH;
+        }
+
+        function checkAuthStatus() {
+            const isAuthed = sessionStorage.getItem('mihrab_authenticated') === 'true';
+            const gate = document.getElementById('login-gate');
+            const app = document.getElementById('app-wrapper');
+            if (isAuthed) {
+                gate.classList.add('hidden');
+                app.classList.remove('hidden');
+                app.classList.add('flex');
+            } else {
+                gate.classList.remove('hidden');
+                app.classList.add('hidden');
+                app.classList.remove('flex');
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const userInput = document.getElementById('login-username').value.trim();
+            const passInput = document.getElementById('login-password').value.trim();
+            const creds = getStoredAuth();
+
+            if (userInput === creds.username && passInput === creds.password) {
+                sessionStorage.setItem('mihrab_authenticated', 'true');
+                document.getElementById('login-error').classList.add('hidden');
+                checkAuthStatus();
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        }
+
+        function logoutGate() {
+            stopAllPlayback();
+            sessionStorage.removeItem('mihrab_authenticated');
+            document.getElementById('login-password').value = '';
+            checkAuthStatus();
+        }
+
+        function togglePasswordVisibility() {
+            const passEl = document.getElementById('login-password');
+            const icon = document.getElementById('pass-eye-icon');
+            if (passEl.type === 'password') {
+                passEl.type = 'text';
+                icon.className = 'fa-solid fa-eye-slash';
+            } else {
+                passEl.type = 'password';
+                icon.className = 'fa-solid fa-eye';
+            }
+        }
+
+        function openAdminModal() {
+            const creds = getStoredAuth();
+            document.getElementById('admin-new-user').value = creds.username;
+            document.getElementById('admin-new-pass').value = creds.password;
+            document.getElementById('admin-save-msg').classList.add('hidden');
+            document.getElementById('admin-modal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').classList.add('hidden');
+        }
+
+        function updateCredentials() {
+            const newUser = document.getElementById('admin-new-user').value.trim();
+            const newPass = document.getElementById('admin-new-pass').value.trim();
+            if (!newUser || !newPass) return;
+            localStorage.setItem('mihrab_auth_creds', JSON.stringify({ username: newUser, password: newPass }));
+            const msg = document.getElementById('admin-save-msg');
+            msg.classList.remove('hidden');
+            setTimeout(() => msg.classList.add('hidden'), 3000);
+        }
+
+        // -------------------------------------------------------------------------
+        // B. COMPLETE VERIFIED POEMS DATABASE (ALL 4 ORIGINAL POEMS VERBATIM)
+        // -------------------------------------------------------------------------
+        const REFRAIN_POEM_1 = {
+            isRefrain: true,
+            lines: [
+                'أَبِحُبِّ أَحْبَابِي أُلَــــامْ | لَا وَالَّذِي خَلَقَ الْأَنَــــامْ ||',
+                'عَيْنَايَ بَعْدَ فِرَاقِهِمْ | مَا ذَاقَتَا طِيبَ الْمَنَــــامْ ~ ||'
+            ],
+            segments: [
+                { text: 'أَبِحُبِّ', beats: 2, pitch: 40, isMadd: false },
+                { text: 'أَحْبَابِي', beats: 3, pitch: 55, isMadd: true },
+                { text: 'أُلَــــامْ |', beats: 4, pitch: 72, isMadd: true },
+                { text: 'لَا', beats: 2, pitch: 82, isMadd: true },
+                { text: 'وَالَّذِي', beats: 2.5, pitch: 75, isMadd: false },
+                { text: 'خَلَقَ', beats: 2, pitch: 62, isMadd: false },
+                { text: 'الْأَنَــــامْ ||', beats: 5, pitch: 45, isMadd: true },
+                { text: 'عَيْنَايَ', beats: 3, pitch: 65, isMadd: true },
+                { text: 'بَعْدَ', beats: 2, pitch: 60, isMadd: false },
+                { text: 'فِرَاقِهِمْ |', beats: 3.5, pitch: 52, isMadd: true },
+                { text: 'مَا ذَاقَتَا', beats: 3, pitch: 58, isMadd: true },
+                { text: 'طِيبَ', beats: 2, pitch: 42, isMadd: false },
+                { text: 'الْمَنَــــامْ ~ ||', beats: 6, pitch: 25, isMadd: true }
+            ],
+            phonetic: 'أَ-بِ-حُبْ-بِ أَحْ-بَـا-بِي أُ-لَااااامْ (وقفة قصيرة) لَا وَالْ-لَ-ذِي خَ-لَ-قَ الْ-أَ-نَااااامْ (تنفس كامل) // عَيْ-نَـا-يَ بَعْ-دَ فِ-رَا-قِ-هِمْ (خطف نفس) مَا ذَا-قَ-تَا طِي-بَ الْ-مَ-نَااااامْ (تهدئة تدريجية إلى القرار).',
+            maddDetails: [
+                '«أَحْبَابِي»: مدّ طبيعي بالألف والياء (حركتان لكل منهما) لإبراز الحنين.',
+                '«أُلَامْ»: مدّ عارض للسكون (4 حركات) مع صعود لحني واضح.',
+                '«الْأَنَامْ»: مدّ عارض للسكون (4 إلى 6 حركات) مع غنّة خفيفة في الميم الساكنة.',
+                '«الْمَنَامْ»: مدّ عارض للسكون (6 حركات كاملة) مع هبوط متدرج (تهدئة) للاستقرار على درجة القرار.'
+            ],
+            pauses: 'وقفة قصيرة (|) بعد «أُلامْ» لإبراز نبرة القسم في «لا والذي»، ووقفة تامة للتنفس (||) بعد «الأنامْ»، ثم وقفة لطيفة بعد «فراقهم» قبل قفلة البيت.',
+            vocalTip: 'ابدأ «أَبِحُبِّ» من الطبقة الوسطى (النوا)، واصعد تدريجياً عند «أُلامْ»، ثم اجعل ذروة الجواب عند «لَا وَالَّذِي»، واهبط بهدوء وتخشّع عند «طيب المنامْ».'
+        };
+
+        const BUILTIN_POEMS = [
+            {
+                id: 'poem1',
+                isCustom: false,
+                tabTitle: '١. أبِحُبِّ أحبابي أُلام (كاملة)',
+                fullTitle: 'قصيدة: أبِحُبِّ أحبابي أُلامُ لا والذي خلقَ الأنام (كاملة باللازمة المتكررة)',
+                type: 'قصيدة مديح وتوسّل (11 مقطعاً)',
+                maqam: 'مقام البياتي (يستقر على درجة الدوكاه)',
+                meter: 'إيقاع المصمودي الصغير / أو إرسال حر موزون',
+                intro: 'القصيدة كاملة بجميع أبياتها ولازمتها المتكررة ست مرات بين كل مقطع ومقطع كما تُؤدى في مجالس الإنشاد، مع ضبط التشكيل والمدود العارضة للسكون.',
+                stanzas: [
+                    { id: 'p1_r1', label: 'اللازمة (١) - المطلع', ...REFRAIN_POEM_1 },
+                    {
+                        id: 'p1_s1',
+                        label: 'المقطع الأول: إنّي شُغِفت بحبّهم',
+                        isRefrain: false,
+                        lines: [
+                            'إِنِّي شُغِفْتُ بِحُبِّهِمْ | مِنْ قَبْلِ نُطْقِي بِالْكَلَــــامْ ||',
+                            'وَأَنَا رَضِيعُ خِصَالِهِمْ | وَالطِّفْلُ يُؤْلِمُهُ الْفِطَــــامْ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'إِنِّي', beats: 2.5, pitch: 45, isMadd: true },
+                            { text: 'شُغِفْتُ', beats: 2.5, pitch: 58, isMadd: false },
+                            { text: 'بِحُبِّهِمْ |', beats: 3, pitch: 65, isMadd: false },
+                            { text: 'مِنْ قَبْلِ', beats: 2.5, pitch: 60, isMadd: false },
+                            { text: 'نُطْقِي', beats: 2.5, pitch: 52, isMadd: true },
+                            { text: 'بِالْكَلَــــامْ ||', beats: 5, pitch: 42, isMadd: true },
+                            { text: 'وَأَنَا', beats: 2.5, pitch: 68, isMadd: false },
+                            { text: 'رَضِيعُ', beats: 3, pitch: 78, isMadd: true },
+                            { text: 'خِصَالِهِمْ |', beats: 3.5, pitch: 70, isMadd: true },
+                            { text: 'وَالطِّفْلُ', beats: 2.5, pitch: 55, isMadd: false },
+                            { text: 'يُؤْلِمُهُ', beats: 3, pitch: 42, isMadd: false },
+                            { text: 'الْفِطَــــامْ ~ ||', beats: 6, pitch: 25, isMadd: true }
+                        ],
+                        phonetic: 'إِنْ-نِي شُ-غِفْ-تُ بِ-حُبْ-بِ-هِمْ (وقفة) مِنْ قَبْ-لِ نُطْ-قِي بِالْ-كَ-لَااااامْ (تنفس) // وَأَ-نَا رَ-ضِي-عُ خِ-صَـا-لِ-هِمْ (وقفة) وَالطِّفْ-لُ يُؤْ-لِ-مُ-هُ الْ-فِ-طَااااامْ (تهدئة حزينة).',
+                        maddDetails: [
+                            '«إِنِّي»: تشديد النون مع غنّة حركتين + مدّ الياء حركتين.',
+                            '«بِالْكَلَامْ»: مدّ عارض للسكون (4 حركات).',
+                            '«رَضِيعُ»: مدّ طبيعي بالياء (حركتان) مع نبرة عاطفية.',
+                            '«الْفِطَامْ»: مدّ عارض للسكون (6 حركات) مع تدرج خافض للصوت يعبّر عن الألم والشوق.'
+                        ],
+                        pauses: 'وقفة لطيفة بعد «بحبهم» وبعد «خصالهم»، وتنفس عميق في نهاية الشطر الأول.',
+                        vocalTip: 'أظهر الشجن في كلمة «يُؤْلِمُهُ» بتليين الصوت وخفض الطبقة قبل المدّ الأخير في «الفطامْ».'
+                    },
+                    { id: 'p1_r2', label: 'اللازمة (٢) - إعادة المطلع', ...REFRAIN_POEM_1 },
+                    {
+                        id: 'p1_s2',
+                        label: 'المقطع الثاني: عن حبهم لا أنتهي',
+                        isRefrain: false,
+                        lines: [
+                            'عَنْ حُبِّهِمْ لَا أَنْتَهِي | وَسِوَاهُمُ لَا أَشْتَهِي ||',
+                            'بِاللَّهِ رُحْ يَا مُلْتَهِي | بِالْعَذْلِ أَكْثَرْتَ الْمَلَــــامْ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'عَنْ حُبِّهِمْ', beats: 2.5, pitch: 50, isMadd: false },
+                            { text: 'لَا أَنْتَهِي |', beats: 3.5, pitch: 72, isMadd: true },
+                            { text: 'وَسِوَاهُمُ', beats: 3, pitch: 78, isMadd: true },
+                            { text: 'لَا أَشْتَهِي ||', beats: 4, pitch: 65, isMadd: true },
+                            { text: 'بِاللَّهِ', beats: 2.5, pitch: 82, isMadd: true },
+                            { text: 'رُحْ', beats: 1.5, pitch: 75, isMadd: false },
+                            { text: 'يَا مُلْتَهِي |', beats: 3.5, pitch: 60, isMadd: true },
+                            { text: 'بِالْعَذْلِ', beats: 2.5, pitch: 50, isMadd: false },
+                            { text: 'أَكْثَرْتَ', beats: 2.5, pitch: 38, isMadd: false },
+                            { text: 'الْمَلَــــامْ ~ ||', beats: 6, pitch: 25, isMadd: true }
+                        ],
+                        phonetic: 'عَنْ حُبْ-بِ-هِمْ لَا أَنْ-تَ-هِي (وقفة) وَسِ-وَا-هُ-مُ لَا أَشْ-تَ-هِي (تنفس) // بِالْ-لَـا-هِ رُحْ يَا مُلْ-تَ-هِي (وقفة) بِالْ-عَذْ-لِ أَكْ-ثَرْ-تَ الْ-مَ-لَااااامْ.',
+                        maddDetails: [
+                            '«أَنْتَهِي / أَشْتَهِي / مُلْتَهِي»: مدّ طبيعي بالياء (حركتان إلى 3 حركات) لإبراز الجناس.',
+                            '«وَسِوَاهُمُ»: إشباع ضمة الميم قليلاً للوزن الشعري.',
+                            '«الْمَلَامْ»: مدّ عارض للسكون (6 حركات) مع استقرار تام.'
+                        ],
+                        pauses: 'وقفة إيقاعية سريعة بعد «أنتهي»، «أشتهي»، «ملتهي» لأن البيت ذو إيقاع متدفق.',
+                        vocalTip: 'ارفع الطبقة في «بِاللَّهِ رُحْ يَا مُلْتَهِي» لإظهار العزم، ثم اهدأ في نهاية العجز للعودة إلى اللازمة.'
+                    },
+                    { id: 'p1_r3', label: 'اللازمة (٣) - إعادة المطلع', ...REFRAIN_POEM_1 },
+                    {
+                        id: 'p1_s3',
+                        label: 'المقطع الثالث: يا ساكنين المنحنى',
+                        isRefrain: false,
+                        lines: [
+                            'يَا سَاكِنِينَ الْمُنْحَنَى | ظَهْرِي مِنَ الشَّوْقِ انْحَنَى ||',
+                            'هَلَّا مَنَنْتُمْ بِاللِّقَا بِالْوِصَالِ | يَوْماً لِمَأْسُورِ الْغَرَــــامْ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'يَا سَاكِنِينَ', beats: 3.5, pitch: 60, isMadd: true },
+                            { text: 'الْمُنْحَنَى |', beats: 3.5, pitch: 75, isMadd: true },
+                            { text: 'ظَهْرِي مِنَ', beats: 2.5, pitch: 70, isMadd: false },
+                            { text: 'الشَّوْقِ انْحَنَى ||', beats: 4, pitch: 58, isMadd: true },
+                            { text: 'هَلَّا مَنَنْتُمْ', beats: 3, pitch: 80, isMadd: true },
+                            { text: 'بِاللِّقَا بِالْوِصَالِ |', beats: 4, pitch: 72, isMadd: true },
+                            { text: 'يَوْماً', beats: 2, pitch: 55, isMadd: false },
+                            { text: 'لِمَأْسُورِ', beats: 3, pitch: 40, isMadd: true },
+                            { text: 'الْغَرَــــامْ ~ ||', beats: 6, pitch: 25, isMadd: true }
+                        ],
+                        phonetic: 'يَا سَا-كِ-نِي-نَ الْ-مُنْ-حَ-نَى (وقفة) ظَهْ-رِي مِ-نَ الشَّوْ-قِ انْ-حَ-نَى (تنفس) // هَلْ-لَا مَ-نَنْ-تُمْ بِالْ-لِ-قَا بِالْ-وِ-صَا-لِ (وقفة) يَوْ-مًـا لِ-مَأْ-سُو-رِ الْ-غَ-رَااااامْ.',
+                        maddDetails: [
+                            '«يَا سَاكِنِينَ»: مدّ ألف النداء (حركتان) + مدّ الياء (حركتان).',
+                            '«الْمُنْحَنَى / انْحَنَى / بِاللِّقَا / بِالْوِصَالِ»: مدود بالألف (3 حركات) لإبراز التناغم الموسيقي في الإنشاد الشامي والمصري.',
+                            '«الْغَرَامْ»: مدّ عارض للسكون (6 حركات) مع قفلة هادئة.'
+                        ],
+                        pauses: 'وقفة قصيرة بعد «المنحنى» وبعد «باللقا بالوصال» لتعزيز التقطيع الموسيقي للبيت.',
+                        vocalTip: 'استخدم نداءً دافئاً في «يَا سَاكِنِينَ»، وأظهر الانكسار والرجاء في «هَلَّا مَنَنْتُمْ بِاللِّقَا بِالْوِصَالِ».'
+                    },
+                    { id: 'p1_r4', label: 'اللازمة (٤) - إعادة المطلع', ...REFRAIN_POEM_1 },
+                    {
+                        id: 'p1_s4',
+                        label: 'المقطع الرابع: ذهبَ الذين نحبهم',
+                        isRefrain: false,
+                        lines: [
+                            'ذَهَبَ الَّذِينَ نُحِبُّهُمْ | فَعَلَيْكِ يَا دُنْيَا السَّلَــــامْ ||',
+                            'لَا تَذْكُرَنَّ الْعَيْشَ لِي | فَالْعَيْشُ بَعْدَهُمُ حَرَــــامْ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'ذَهَبَ الَّذِينَ', beats: 3, pitch: 52, isMadd: true },
+                            { text: 'نُحِبُّهُمْ |', beats: 3, pitch: 62, isMadd: false },
+                            { text: 'فَعَلَيْكِ', beats: 2.5, pitch: 68, isMadd: false },
+                            { text: 'يَا دُنْيَا', beats: 2.5, pitch: 58, isMadd: true },
+                            { text: 'السَّلَــــامْ ||', beats: 5, pitch: 42, isMadd: true },
+                            { text: 'لَا تَذْكُرَنَّ', beats: 3, pitch: 75, isMadd: true },
+                            { text: 'الْعَيْشَ لِي |', beats: 3, pitch: 65, isMadd: true },
+                            { text: 'فَالْعَيْشُ', beats: 2.5, pitch: 50, isMadd: false },
+                            { text: 'بَعْدَهُمُ', beats: 2.5, pitch: 38, isMadd: false },
+                            { text: 'حَرَــــامْ ~ ||', beats: 6, pitch: 25, isMadd: true }
+                        ],
+                        phonetic: 'ذَ-هَ-بَ الْ-لَ-ذِي-نَ نُ-حِبْ-بُ-هُمْ (وقفة) فَ-عَ-لَيْ-كِ يَا دُنْ-يَا السَّ-لَااااامْ (تنفس) // لَا تَذْ-كُ-رَنْ-نَ الْ-عَيْ-شَ لِي (وقفة) فَالْ-عَيْ-شُ بَعْ-دَ-هُ-مُ حَ-رَااااامْ.',
+                        maddDetails: [
+                            '«السَّلَامْ»: مدّ عارض للسكون (4 إلى 6 حركات) بنبرة وداع هادئة.',
+                            '«تَذْكُرَنَّ»: تشديد النون مع غنّة واضحة حركتين.',
+                            '«حَرَامْ»: مدّ عارض للسكون (6 حركات) في ختام البيت.'
+                        ],
+                        pauses: 'وقفة معنوية واضحة بعد «نُحبّهم» ليأتي بعدها توديع الدنيا «فعليكِ يا دنيا السلامْ».',
+                        vocalTip: 'اجعل الأداء هنا خاشعاً مهيباً، وانتقل في العجز نحو نغمة شجية تبرز صدق الفقد.'
+                    },
+                    { id: 'p1_r5', label: 'اللازمة (٥) - إعادة المطلع', ...REFRAIN_POEM_1 },
+                    {
+                        id: 'p1_s5',
+                        label: 'المقطع الخامس: يا واقفين على الصفا',
+                        isRefrain: false,
+                        lines: [
+                            'يَا وَاقِفِينَ عَلَى الصَّفَا | قَلْبِي بِكُمْ نَالَ الصَّفَا ||',
+                            'مُنُّوا بِحَقِّ الْمُصْطَفَى | لِلصَّبِّ فِي دَارِ السَّلَــــامْ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'يَا وَاقِفِينَ', beats: 3.5, pitch: 65, isMadd: true },
+                            { text: 'عَلَى الصَّفَا |', beats: 3.5, pitch: 78, isMadd: true },
+                            { text: 'قَلْبِي بِكُمْ', beats: 2.5, pitch: 72, isMadd: true },
+                            { text: 'نَالَ الصَّفَا ||', beats: 4, pitch: 60, isMadd: true },
+                            { text: 'مُنُّوا بِحَقِّ', beats: 3, pitch: 88, isMadd: true },
+                            { text: 'الْمُصْطَفَى |', beats: 4, pitch: 82, isMadd: true },
+                            { text: 'لِلصَّبِّ فِي', beats: 2.5, pitch: 55, isMadd: false },
+                            { text: 'دَارِ', beats: 2, pitch: 40, isMadd: true },
+                            { text: 'السَّلَــــامْ ~ ||', beats: 6, pitch: 25, isMadd: true }
+                        ],
+                        phonetic: 'يَا وَا-قِ-فِي-نَ عَ-لَى الصَّ-فَا (وقفة) قَلْ-بِي بِ-كُمْ نَا-لَ الصَّ-فَا (تنفس) // مُنْ-نُوا بِ-حَقْ-قِ الْ-مُصْ-طَ-فَى (وقفة) لِلصَّبْ-بِ فِي دَا-رِ السَّ-لَااااامْ.',
+                        maddDetails: [
+                            '«الصَّفَا» (الأولى والثانية): مدّ طبيعي بالألف (3 حركات) مع التفريق في المعنى بالأداء.',
+                            '«الْمُصْطَفَى»: مدّ بالألف المقصورة (4 حركات) عند ذروة الجواب الصوتي.',
+                            '«السَّلَامْ»: مدّ الختام (6 حركات كاملة) مع تهدئة شاملة.'
+                        ],
+                        pauses: 'وقفة تعظيم بعد «المصطفى» قبل النزول إلى قفلة الختام «للصبّ في دار السلامْ».',
+                        vocalTip: 'اجعل «مُنُّوا بِحَقِّ الْمُصْطَفَى» في أعلى طبقة مريحة لصوتك (الجواب)، ثم اهبط بسكينة عند «دار السلامْ».'
+                    },
+                    { id: 'p1_r6', label: 'اللازمة (٦) - ختام القصيدة', ...REFRAIN_POEM_1 }
+                ]
+            },
+            {
+                id: 'poem2',
+                isCustom: false,
+                tabTitle: '٢. موشح: يا عذولي كفّ اللّوم',
+                fullTitle: 'موشح: وتشهد نجمةً لمعت (يا عذولي كفّ اللّوم)',
+                type: 'موشح أندلسي / صوفي (4 أدوار)',
+                maqam: 'مقام الرست أو السيكاه (مفعم بالبهجة والوجد)',
+                meter: 'إيقاع السماعي الدارج أو المصمودي الحيوي',
+                intro: 'موشح بديع البناء يتكون من أربعة أدوار كاملة، كل دور يتألف من أربعة أغصان متتابعة تنتهي بقفلة (دوم، المسقوم، رسوم، القوم)، يتبعها القفل المتكرر: «يا عذولي كفّ اللّوم / ولم تدري بحالي اليوم».',
+                stanzas: [
+                    {
+                        id: 'p2_s1',
+                        label: 'الدور الأول + القفل (اللازمة)',
+                        isRefrain: false,
+                        lines: [
+                            'وَتَشْهَدُ نَجْمَةٌ لَمَعَتْ | وَمِنْ ذَاكَ الْحِمَى طَلَعَتْ ||',
+                            'يَا لَيْتَ الرُّوحَ مَا رَجَعَتْ | وَتَبْقَى فِي حِمَاهُمْ دُومْ ~ ||',
+                            'يَا عَذُولِي كَفَّ اللَّــــوْمْ | وَلَمْ تَدْرِي بِحَالِي الْيَــــوْمْ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'وَتَشْهَدُ نَجْمَةٌ', beats: 2.5, pitch: 48, isMadd: false },
+                            { text: 'لَمَعَتْ |', beats: 2, pitch: 58, isMadd: false },
+                            { text: 'وَمِنْ ذَاكَ الْحِمَى', beats: 2.5, pitch: 65, isMadd: true },
+                            { text: 'طَلَعَتْ ||', beats: 2.5, pitch: 72, isMadd: false },
+                            { text: 'يَا لَيْتَ الرُّوحَ', beats: 2.5, pitch: 78, isMadd: true },
+                            { text: 'مَا رَجَعَتْ |', beats: 2.5, pitch: 70, isMadd: false },
+                            { text: 'وَتَبْقَى فِي حِمَاهُمْ', beats: 3, pitch: 55, isMadd: true },
+                            { text: 'دُومْ ~ ||', beats: 4.5, pitch: 40, isMadd: true },
+                            { text: 'يَا عَذُولِي', beats: 3, pitch: 68, isMadd: true },
+                            { text: 'كَفَّ اللَّــــوْمْ |', beats: 4, pitch: 55, isMadd: true },
+                            { text: 'وَلَمْ تَدْرِي', beats: 2.5, pitch: 42, isMadd: false },
+                            { text: 'بِحَالِي الْيَــــوْمْ ~ ||', beats: 5.5, pitch: 25, isMadd: true }
+                        ],
+                        phonetic: 'وَ-تَشْ-هَ-دُ نَجْ-مَ-تُنْ لَ-مَ-عَتْ | وَ-مِنْ ذَا-كَ الْ-حِ-مَى طَ-لَ-عَتْ || يَا لَيْ-تَ الرُّو-حَ مَا رَ-جَ-عَتْ | وَ-تَبْ-قَى فِي حِ-مَا-هُمْ دُووومْ || يَا عَ-ذُو-لِي كَفْ-فَ اللَّـوْوومْ | وَ-لَمْ تَدْ-رِي بِ-حَا-لِي الْ-يَـوْوومْ.',
+                        maddDetails: [
+                            '«دُومْ»: مدّ لين عارض للسكون بالواو (4 حركات) يمهد للدخول في القفل.',
+                            '«عَذُولِي»: مدّ طبيعي بالواو والياء (حركتان لكل حرف).',
+                            '«اللَّوْمْ / الْيَوْمْ»: مدّ لين عارض للسكون (4 إلى 6 حركات) مع إشباع صوت الواو الساكنة قبل الميم.'
+                        ],
+                        pauses: 'وقفات إيقاعية رشيقة بعد التاء الساكنة في (لمعتْ، طلعتْ، رجعتْ) تحافظ على حيوية الموشح، وتنفس كامل بعد «دُومْ».',
+                        vocalTip: 'أدِّ الأغصان الأربعة بنبرة متصاعدة مفعمة بالبشر، ثم انتقل في القفل «يا عذولي كفّ اللّوم» إلى نبرة عتاب رقيقة تستقر على قرار المقام.'
+                    },
+                    {
+                        id: 'p2_s2',
+                        label: 'الدور الثاني (وصال الحبيب)',
+                        isRefrain: false,
+                        lines: [
+                            'يَا لَيْتَ الصُّبْحَ مَا بَانَا | كَيْ لَا يَرَانَا إِنْسَانَا ||',
+                            'حَبِيبُ الرُّوحِ وَافَانَا | بِكَأْسٍ يُبْرَأُ الْمَسْقُــــومْ ~ ||',
+                            'يَا عَذُولِي كَفَّ اللَّــــوْمْ | وَلَمْ تَدْرِي عَنْ حَالِي الْيَــــوْمْ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'يَا لَيْتَ الصُّبْحَ', beats: 2.5, pitch: 55, isMadd: false },
+                            { text: 'مَا بَانَا |', beats: 3, pitch: 68, isMadd: true },
+                            { text: 'كَيْ لَا يَرَانَا', beats: 2.5, pitch: 75, isMadd: true },
+                            { text: 'إِنْسَانَا ||', beats: 3, pitch: 82, isMadd: true },
+                            { text: 'حَبِيبُ الرُّوحِ', beats: 2.5, pitch: 85, isMadd: true },
+                            { text: 'وَافَانَا |', beats: 3, pitch: 72, isMadd: true },
+                            { text: 'بِكَأْسٍ يُبْرَأُ', beats: 2.5, pitch: 55, isMadd: false },
+                            { text: 'الْمَسْقُــــومْ ~ ||', beats: 5, pitch: 40, isMadd: true },
+                            { text: 'يَا عَذُولِي', beats: 3, pitch: 68, isMadd: true },
+                            { text: 'كَفَّ اللَّــــوْمْ |', beats: 4, pitch: 52, isMadd: true },
+                            { text: 'وَلَمْ تَدْرِي عَنْ', beats: 2.5, pitch: 40, isMadd: false },
+                            { text: 'حَالِي الْيَــــوْمْ ~ ||', beats: 5.5, pitch: 25, isMadd: true }
+                        ],
+                        phonetic: 'يَا لَيْ-تَ الصُّبْ-حَ مَا بَا-نَا | كَيْ لَا يَ-رَا-نَا إِنْ-سَا-نَا || حَ-بِي-بُ الرُّو-حِ وَا-فَا-نَا | بِ-كَأْ-سِنْ يُبْ-رَ-أُ الْ-مَسْ-قُـووومْ || يَا عَ-ذُو-لِي كَفْ-فَ اللَّـوْوومْ | وَ-لَمْ تَدْ-رِ عَنْ حَا-لِي الْ-يَـوْوومْ.',
+                        maddDetails: [
+                            '«بَانَا / إِنْسَانَا / وَافَانَا»: مدّ ألف الإطلاق (3 حركات) يعطي رحابة لحنية متناغمة.',
+                            '«الْمَسْقُومْ»: مدّ عارض للسكون بالواو (5 حركات) مع تهدئة صوتية.'
+                        ],
+                        pauses: 'وقفة قصيرة بعد كل ألف إطلاق (بانا | إنسانا || وافانا |) لتأكيد القافية الداخلية للموشح.',
+                        vocalTip: 'أظهر الفرح الروحي عند عبارة «حَبِيبُ الرُّوحِ وَافَانَا» بفتح الصوت وإشراقه في منطقة الجواب.'
+                    },
+                    {
+                        id: 'p2_s3',
+                        label: 'الدور الثالث (السهر ومناجاة النجم)',
+                        isRefrain: false,
+                        lines: [
+                            'تَنَامُ النَّاسُ وَأَنَا فَائِقْ | وَأَرْعَى النَّجْمَ وَالسَّائِقْ ||',
+                            'فَبِاللَّهِ ارْحَمُوا عَاشِقْ | فِي حَالِ الْحُبِّ صَارَ رُسُــــومْ ~ ||',
+                            'يَا عَذُولِي كَفَّ اللَّــــوْمْ | وَلَمْ تَدْرِي عَنْ حَالِي الْيَــــوْمْ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'تَنَامُ النَّاسُ', beats: 2.5, pitch: 50, isMadd: true },
+                            { text: 'وَأَنَا فَائِقْ |', beats: 3, pitch: 65, isMadd: true },
+                            { text: 'وَأَرْعَى النَّجْمَ', beats: 2.5, pitch: 72, isMadd: false },
+                            { text: 'وَالسَّائِقْ ||', beats: 3, pitch: 78, isMadd: true },
+                            { text: 'فَبِاللَّهِ ارْحَمُوا', beats: 3, pitch: 84, isMadd: true },
+                            { text: 'عَاشِقْ |', beats: 2.5, pitch: 68, isMadd: true },
+                            { text: 'فِي حَالِ الْحُبِّ', beats: 2.5, pitch: 52, isMadd: false },
+                            { text: 'صَارَ رُسُــــومْ ~ ||', beats: 5, pitch: 40, isMadd: true },
+                            { text: 'يَا عَذُولِي', beats: 3, pitch: 68, isMadd: true },
+                            { text: 'كَفَّ اللَّــــوْمْ |', beats: 4, pitch: 52, isMadd: true },
+                            { text: 'وَلَمْ تَدْرِي عَنْ', beats: 2.5, pitch: 40, isMadd: false },
+                            { text: 'حَالِي الْيَــــوْمْ ~ ||', beats: 5.5, pitch: 25, isMadd: true }
+                        ],
+                        phonetic: 'تَ-نَا-مُ النَّا-سُ وَأَ-نَا فَا-ئِقْ | وَأَرْ-عَى النَّجْ-مَ وَالسَّا-ئِقْ || فَ-بِالْ-لَـا-هِ ارْ-حَ-مُوا عَا-شِقْ | فِي حَا-لِ الْ-حُبْ-بِ صَا-رَ رُ-سُـووومْ || يَا عَ-ذُو-لِي كَفْ-فَ اللَّـوْوومْ | وَ-لَمْ تَدْ-رِ عَنْ حَا-لِي الْ-يَـوْوومْ.',
+                        maddDetails: [
+                            '«فَائِقْ / السَّائِقْ»: مدّ متصل بالألف (4 حركات) مع الوقف على القاف الساكنة المقلقلة بلطف.',
+                            '«رُسُومْ»: مدّ عارض للسكون بالواو (5 حركات).'
+                        ],
+                        pauses: 'انتبه لقلقلة القاف الساكنة بلطف عند الوقف على (فائقْ، السائقْ، عاشقْ) دون مبالغة.',
+                        vocalTip: 'رقّق صوتك في «فَبِاللَّهِ ارْحَمُوا عَاشِقْ» لإيصال معنى التضرع والانكسار.'
+                    },
+                    {
+                        id: 'p2_s4',
+                        label: 'الدور الرابع (كتمان السر)',
+                        isRefrain: false,
+                        lines: [
+                            'يَا قَلْبُ لَا تَبُحْ بِالْحَالْ | فَيُفْتُوا بِقَتْلِكَ فِي الْحَالْ ||',
+                            'فَكَمْ رَاحُوا بِحَدِّ نِصَالْ | مِنَ الْأَحْبَابِ خَوَاصِّ الْقَــــوْمْ ~ ||',
+                            'يَا عَذُولِي كَفَّ اللَّــــوْمْ | وَلَمْ تَدْرِي عَنْ حَالِي الْيَــــوْمْ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'يَا قَلْبُ لَا تَبُحْ', beats: 2.5, pitch: 58, isMadd: false },
+                            { text: 'بِالْحَالْ |', beats: 3, pitch: 70, isMadd: true },
+                            { text: 'فَيُفْتُوا بِقَتْلِكَ', beats: 2.5, pitch: 78, isMadd: false },
+                            { text: 'فِي الْحَالْ ||', beats: 3, pitch: 85, isMadd: true },
+                            { text: 'فَكَمْ رَاحُوا', beats: 2.5, pitch: 80, isMadd: true },
+                            { text: 'بِحَدِّ نِصَالْ |', beats: 3, pitch: 66, isMadd: true },
+                            { text: 'مِنَ الْأَحْبَابِ', beats: 2.5, pitch: 50, isMadd: true },
+                            { text: 'خَوَاصِّ الْقَــــوْمْ ~ ||', beats: 5, pitch: 38, isMadd: true },
+                            { text: 'يَا عَذُولِي', beats: 3, pitch: 68, isMadd: true },
+                            { text: 'كَفَّ اللَّــــوْمْ |', beats: 4, pitch: 52, isMadd: true },
+                            { text: 'وَلَمْ تَدْرِي عَنْ', beats: 2.5, pitch: 40, isMadd: false },
+                            { text: 'حَالِي الْيَــــوْمْ ~ ||', beats: 6, pitch: 22, isMadd: true }
+                        ],
+                        phonetic: 'يَا قَلْ-بُ لَا تَ-بُحْ بِالْ-حَالْ | فَ-يُفْ-تُوا بِ-قَتْ-لِ-كَ فِي الْ-حَالْ || فَ-كَمْ رَا-حُوا بِ-حَدْ-دِ نِ-صَالْ | مِ-نَ الْ-أَحْ-بَا-بِ خَ-وَاصْ-صِ الْ-قَـوْوومْ || يَا عَ-ذُو-لِي كَفْ-فَ اللَّـوْوومْ | وَ-لَمْ تَدْ-رِ عَنْ حَا-لِي الْ-يَـوْوومْ.',
+                        maddDetails: [
+                            '«بِالْحَالْ / فِي الْحَالْ / نِصَالْ»: مدّ عارض للسكون بالألف (4 حركات) يعطي جرساً قوياً.',
+                            '«الْقَوْمْ»: مدّ لين عارض للسكون (5 حركات).'
+                        ],
+                        pauses: 'وقفة تحذير واضحة بعد «بالحالْ» الأولى والثانية.',
+                        vocalTip: 'اختم القفل الأخير «ولم تدري عن حالي اليومْ» بتهدئة تدريجية بطيئة جداً لتكون مسك الختام للموشح.'
+                    }
+                ]
+            },
+            {
+                id: 'poem3',
+                isCustom: false,
+                tabTitle: '٣. أبداً تحنّ إليكم الأرواح',
+                fullTitle: 'قصيدة: أَبَداً تَحِنُّ إِلَيْكُمُ الْأَرْوَاحُ (السهروردي)',
+                type: 'قصيدة صوفية كبرى (5 أبيات كاملة)',
+                maqam: 'مقام الحجاز أو البياتي الشوري (جلال وسمو روحي)',
+                meter: 'بحر الكامل التام (إيقاع الوحدة الكبيرة أو الإنشاد المرسل)',
+                intro: 'من أشهر قصائد الإنشاد الصوفي وأجلّها قدراً، نظمها الإمام شهاب الدين السهروردي على بحر الكامل. تمتاز بقافيتها الحائية المضمومة الممدودة (الْأَرْوَاحُ، وَالرَّاحُ، تَرْتَاحُ، فَضَّاحُ، تُبَاحُ، فَلَاحُ) التي تمنح المنشد مساحة واسعة لإظهار رخامة الصوت والمدّ العذب.',
+                stanzas: [
+                    {
+                        id: 'p3_s1',
+                        label: 'البيت الأول (حنين الأرواح)',
+                        isRefrain: false,
+                        lines: [
+                            'أَبَداً تَحِنُّ إِلَيْكُمُ | الْأَرْوَــــاحُ ||',
+                            'وَوِصَالُكُمْ رَيْحَانُهَا | وَالرَّــــاحُ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'أَبَداً', beats: 2.5, pitch: 42, isMadd: false },
+                            { text: 'تَحِنُّ', beats: 2.5, pitch: 58, isMadd: false },
+                            { text: 'إِلَيْكُمُ |', beats: 3, pitch: 68, isMadd: false },
+                            { text: 'الْأَرْوَــــاحُ ||', beats: 5.5, pitch: 76, isMadd: true },
+                            { text: 'وَوِصَالُكُمْ', beats: 3.5, pitch: 82, isMadd: true },
+                            { text: 'رَيْحَانُهَا |', beats: 4, pitch: 65, isMadd: true },
+                            { text: 'وَالرَّــــاحُ ~ ||', beats: 6.5, pitch: 30, isMadd: true }
+                        ],
+                        phonetic: 'أَ-بَ-دَنْ تَ-حِنْ-نُ إِ-لَيْ-كُ-مُ (وقفة لطيفة) الْ-أَرْ-وَاااااحُو (تنفس كامل) // وَ-وِ-صَا-لُ-كُمْ رَيْ-حَا-نُ-هَا (وقفة) وَالرَّاااااحُو (تهدئة عميقة).',
+                        maddDetails: [
+                            '«الْأَرْوَاحُ»: مدّ طبيعي بالألف يُشبع إنشادياً إلى (4-6 حركات) مع ضم الحاء الممدودة (واو الإشباع).',
+                            '«وَوِصَالُكُمْ / رَيْحَانُهَا»: مدود طبيعية (حركتان إلى 3 حركات) لإبراز فخامة الكلمات.',
+                            '«وَالرَّاحُ»: مدّ الإشباع الختامي (6 حركات) مع تدرج خافض.'
+                        ],
+                        pauses: 'وقفة قصيرة (|) قبل «الْأَرْوَاحُ» وقبل «وَالرَّاحُ» لتهيئة النفس لإشباع القافية.',
+                        vocalTip: 'ابدأ «أَبَداً تَحِنُّ» بخشوع في القرار، وافتح صدرك عند «الْأَرْوَاحُ»، ثم حلّق في الجواب عند «وَوِصَالُكُمْ» وانزل بسكينة عند «وَالرَّاحُ».'
+                    },
+                    {
+                        id: 'p3_s2',
+                        label: 'البيت الثاني (شوق القلوب)',
+                        isRefrain: false,
+                        lines: [
+                            'وَقُلُوبُ أَهْلِ وِدَادِكُمْ | تَشْتَاقُكُمْ ||',
+                            'وَإِلَى لَذِيذِ لِقَائِكُمْ | تَرْتَــــاحُ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'وَقُلُوبُ', beats: 2.5, pitch: 52, isMadd: true },
+                            { text: 'أَهْلِ وِدَادِكُمْ |', beats: 3.5, pitch: 68, isMadd: true },
+                            { text: 'تَشْتَاقُكُمْ ||', beats: 4.5, pitch: 78, isMadd: true },
+                            { text: 'وَإِلَى لَذِيذِ', beats: 3.5, pitch: 85, isMadd: true },
+                            { text: 'لِقَائِكُمْ |', beats: 4, pitch: 62, isMadd: true },
+                            { text: 'تَرْتَــــاحُ ~ ||', beats: 6.5, pitch: 28, isMadd: true }
+                        ],
+                        phonetic: 'وَ-قُ-لُو-بُ أَهْ-لِ وِ-دَا-دِ-كُمْ (وقفة) تَشْ-تَا-قُ-كُمْ (تنفس) // وَ-إِ-لَى لَ-ذِي-ذِ لِ-قَا-ئِ-كُمْ (وقفة) تَرْ-تَاااااحُو.',
+                        maddDetails: [
+                            '«وَقُلُوبُ / وِدَادِكُمْ / تَشْتَاقُكُمْ»: مدود طبيعية متتابعة (حركتان) تمنح انسيابية لحنية.',
+                            '«لِقَائِكُمْ»: مدّ واجب متصل بالألف (4 حركات) لتحقيق الهمزة المكسورة بوضوح.',
+                            '«تَرْتَاحُ»: مدّ إشباع (6 حركات) مع تهدئة واستقرار.'
+                        ],
+                        pauses: 'وقفة تنفس كاملة بعد «تشتاقكم»، ووقفة قصيرة بعد «لقائكم» قبل قفلة «ترتاحُ».',
+                        vocalTip: 'أظهر التلذذ الروحي في نطق «وَإِلَى لَذِيذِ لِقَائِكُمْ» عبر تدوير الصوت وتنعيم المخارج.'
+                    },
+                    {
+                        id: 'p3_s3',
+                        label: 'البيت الثالث (رحمة العاشقين)',
+                        isRefrain: false,
+                        lines: [
+                            'وَا رَحْمَةً لِلْعَاشِقِينَ | تَحَمَّلُوا ||',
+                            'سِرَّ الْمَحَبَّةِ وَالْهَوَى | فَضَّــــاحُ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'وَا رَحْمَةً', beats: 3.5, pitch: 72, isMadd: true },
+                            { text: 'لِلْعَاشِقِينَ |', beats: 3.5, pitch: 82, isMadd: true },
+                            { text: 'تَحَمَّلُوا ||', beats: 4, pitch: 68, isMadd: true },
+                            { text: 'سِرَّ الْمَحَبَّةِ', beats: 3, pitch: 60, isMadd: false },
+                            { text: 'وَالْهَوَى |', beats: 3, pitch: 48, isMadd: true },
+                            { text: 'فَضَّــــاحُ ~ ||', beats: 6.5, pitch: 26, isMadd: true }
+                        ],
+                        phonetic: 'وَا رَحْ-مَ-تَنْ لِلْ-عَا-شِ-قِي-نَ (وقفة) تَ-حَمْ-مَ-لُوا (تنفس) // سِرْ-رَ الْ-مَ-حَبْ-بَ-ةِ وَالْ-هَ-وَى (وقفة) فَضْ-ضَاااااحُو.',
+                        maddDetails: [
+                            '«وَا رَحْمَةً»: مدّ ألف الندبة (3-4 حركات) لإظهار الرقة والشفقة.',
+                            '«لِلْعَاشِقِينَ»: مدّ بالألف والياء (حركتان لكل حرف).',
+                            '«فَضَّاحُ»: تشديد الضاد مع التفخيم ومدّ الألف (6 حركات).'
+                        ],
+                        pauses: 'وقفة قصيرة بعد «للعاشقين» تبرز ثقل الأمانة في «تَحَمَّلُوا».',
+                        vocalTip: 'استخدم نغمة الصبا أو الحجاز الحزين في «وَا رَحْمَةً لِلْعَاشِقِينَ» لإثارة الشجن لدى المستمعين.'
+                    },
+                    {
+                        id: 'p3_s4',
+                        label: 'البيت الرابع (البوح بالسر)',
+                        isRefrain: false,
+                        lines: [
+                            'بِالسِّرِّ إِنْ بَاحُوا تُبَاحُ | دِمَاؤُهُمْ ||',
+                            'وَكَذَا دِمَاءُ الْعَاشِقِينَ | تُبَــــاحُ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'بِالسِّرِّ إِنْ بَاحُوا', beats: 3, pitch: 58, isMadd: true },
+                            { text: 'تُبَاحُ |', beats: 3, pitch: 74, isMadd: true },
+                            { text: 'دِمَاؤُهُمْ ||', beats: 4.5, pitch: 86, isMadd: true },
+                            { text: 'وَكَذَا دِمَاءُ', beats: 3.5, pitch: 76, isMadd: true },
+                            { text: 'الْعَاشِقِينَ |', beats: 3.5, pitch: 55, isMadd: true },
+                            { text: 'تُبَــــاحُ ~ ||', beats: 6.5, pitch: 26, isMadd: true }
+                        ],
+                        phonetic: 'بِالسِّرْ-رِ إِنْ بَا-حُوا تُ-بَا-حُ (وقفة) دِ-مَا-ؤُ-هُمْ (تنفس) // وَ-كَ-ذَا دِ-مَا-ءُ الْ-عَا-شِ-قِي-نَ (وقفة) تُ-بَاااااحُو.',
+                        maddDetails: [
+                            '«دِمَاؤُهُمْ / دِمَاءُ»: مدّ واجب متصل بالألف (4-5 حركات) في الموضعين.',
+                            '«تُبَاحُ» (الثانية): مدّ إشباع الختام (6 حركات) مع تدرج صوتي هادئ.'
+                        ],
+                        pauses: 'وقفة درامية مؤثرة قبل «دِمَاؤُهُمْ» وقبل «تُبَاحُ» الأخيرة.',
+                        vocalTip: 'ارفع الطبقة بقوة وجلال عند «دِمَاؤُهُمْ» لتكون ذروة البيت، ثم اخفضها بتسليم ووقار في العجز.'
+                    },
+                    {
+                        id: 'p3_s5',
+                        label: 'البيت الخامس (الحكمة والختام)',
+                        isRefrain: false,
+                        lines: [
+                            'فَتَشَبَّهُوا إِنْ لَمْ تَكُونُوا | مِثْلَهُمْ ||',
+                            'إِنَّ التَّشَبُّهَ بِالْكِرَامِ | فَلَــــاحُ ~ ||'
+                        ],
+                        segments: [
+                            { text: 'فَتَشَبَّهُوا', beats: 3, pitch: 65, isMadd: true },
+                            { text: 'إِنْ لَمْ تَكُونُوا |', beats: 3.5, pitch: 78, isMadd: true },
+                            { text: 'مِثْلَهُمْ ||', beats: 4, pitch: 85, isMadd: false },
+                            { text: 'إِنَّ التَّشَبُّهَ', beats: 3.5, pitch: 72, isMadd: false },
+                            { text: 'بِالْكِرَامِ |', beats: 3.5, pitch: 50, isMadd: true },
+                            { text: 'فَلَــــاحُ ~ ||', beats: 7, pitch: 24, isMadd: true }
+                        ],
+                        phonetic: 'فَ-تَ-شَبْ-بَ-هُوا إِنْ لَمْ تَ-كُو-نُوا (وقفة) مِثْ-لَ-هُمْ (تنفس) // إِنْ-نَ التَّ-شَبْ-بُ-هَ بِالْ-كِ-رَا-مِ (وقفة) فَ-لَاااااحُو (تهدئة ختامية).',
+                        maddDetails: [
+                            '«فَتَشَبَّهُوا إِنْ»: مدّ جائز منفصل (4 حركات) بين الواو والهمزة.',
+                            '«بِالْكِرَامِ»: مدّ طبيعي بالألف (حركتان) مع كسر الميم.',
+                            '«فَلَاحُ»: مدّ ختام القصيدة (6 إلى 7 حركات) مع قفلة مقامية راسخة على القرار.'
+                        ],
+                        pauses: 'وقفة حكمة وتأمل بعد «تكونوا» وبعد «بالكرام».',
+                        vocalTip: 'هذا بيت الحكمة والرجاء؛ أدِّه بنبرة متفائلة مشرقة، وأطل المدّ في «فَلَاحُ» مع خفض الصوت تدريجياً حتى السكون التام.'
+                    }
+                ]
+            },
+            {
+                id: 'poem4',
+                isCustom: false,
+                tabTitle: '٤. أنتم فروضي ونفلي (14 بيتاً)',
+                fullTitle: 'قصيدة: أَنْتُمْ فُرُوضِي وَنَفْلِي (كاملة 14 بيتاً)',
+                type: 'قصيدة مناجاة صوفية (7 مقاطع / 14 بيتاً)',
+                maqam: 'مقام البياتي أو الصبا زمزم (خشوع وتدرج روحي)',
+                meter: 'مجزوء المجتث / الخبب الإنشادي الهادئ',
+                intro: 'القصيدة كاملة بجميع أبياتها الأربعة عشر مرتبة في سبعة مقاطع ثنائية، تتدرج في معاني القرب والمناجاة من الصلاة والقبلة إلى قصة موسى عليه السلام والطور والتجلي والافتقار.',
+                stanzas: [
+                    {
+                        id: 'p4_s1',
+                        label: 'المقطع الأول (الأبيات ١ - ٢: القرب والقبلة)',
+                        isRefrain: false,
+                        lines: [
+                            'أَنْتُمْ فُرُوضِي وَنَفْلِي | أَنْتُمْ حَدِيثِي وَشُغْلِي ||',
+                            'يَا قِبْلَتِي فِي صَلَاتِي | إِذَا وَقَفْتُ أُصَلِّــــي ~ ||'
+                        ],
+                        segments: [
+                            { text: 'أَنْتُمْ فُرُوضِي', beats: 3, pitch: 45, isMadd: true },
+                            { text: 'وَنَفْلِي |', beats: 3, pitch: 55, isMadd: true },
+                            { text: 'أَنْتُمْ حَدِيثِي', beats: 3, pitch: 62, isMadd: true },
+                            { text: 'وَشُغْلِي ||', beats: 3.5, pitch: 70, isMadd: true },
+                            { text: 'يَا قِبْلَتِي', beats: 3, pitch: 78, isMadd: true },
+                            { text: 'فِي صَلَاتِي |', beats: 3, pitch: 65, isMadd: true },
+                            { text: 'إِذَا وَقَفْتُ', beats: 2.5, pitch: 48, isMadd: false },
+                            { text: 'أُصَلِّــــي ~ ||', beats: 5.5, pitch: 26, isMadd: true }
+                        ],
+                        phonetic: 'أَنْ-تُمْ فُ-رُو-ضِي وَ-نَفْ-لِي | أَنْ-تُمْ حَ-دِي-ثِي وَ-شُغْ-لِي || يَا قِبْ-لَ-تِي فِي صَ-لَا-تِي | إِ-ذَا وَ-قَفْ-تُ أُ-صَلْ-لِـييي.',
+                        maddDetails: [
+                            '«فُرُوضِي / نَفْلِي / حَدِيثِي / شُغْلِي»: مدود طبيعية بالياء (حركتان إلى 3 حركات) تحافظ على الوزن.',
+                            '«أُصَلِّي»: تشديد اللام مع مدّ الياء (5 حركات) في قفلة البيت.'
+                        ],
+                        pauses: 'وقفة لطيفة في منتصف كل بيت (بعد «ونفلي» وبعد «صلاتي»).',
+                        vocalTip: 'ابدأ بهدوء وتواضع في القرار، واصعد بنعومة عند «يَا قِبْلَتِي فِي صَلَاتِي».'
+                    },
+                    {
+                        id: 'p4_s2',
+                        label: 'المقطع الثاني (الأبيات ٣ - ٤: طور التجلّي)',
+                        isRefrain: false,
+                        lines: [
+                            'جَمَالُكُمْ نَصْبُ عَيْنِي | إِلَيْهِ وَجَّهْتُ كُلِّي ||',
+                            'وَسِرُّكُمْ فِي ضَمِيرِي | وَالْقَلْبُ طُورُ التَّجَلِّــــي ~ ||'
+                        ],
+                        segments: [
+                            { text: 'جَمَالُكُمْ', beats: 2.5, pitch: 52, isMadd: true },
+                            { text: 'نَصْبُ عَيْنِي |', beats: 3, pitch: 64, isMadd: true },
+                            { text: 'إِلَيْهِ وَجَّهْتُ', beats: 3, pitch: 72, isMadd: false },
+                            { text: 'كُلِّي ||', beats: 3.5, pitch: 78, isMadd: true },
+                            { text: 'وَسِرُّكُمْ', beats: 2.5, pitch: 82, isMadd: false },
+                            { text: 'فِي ضَمِيرِي |', beats: 3, pitch: 66, isMadd: true },
+                            { text: 'وَالْقَلْبُ طُورُ', beats: 3, pitch: 48, isMadd: true },
+                            { text: 'التَّجَلِّــــي ~ ||', beats: 5.5, pitch: 26, isMadd: true }
+                        ],
+                        phonetic: 'جَ-مَا-لُ-كُمْ نَصْ-بُ عَيْ-نِي | إِ-لَيْ-هِ وَجْ-جَهْ-تُ كُلْ-لِي || وَ-سِرْ-رُ-كُمْ فِي ضَ-مِي-رِي | وَالْ-قَلْ-بُ طُو-رُ التَّ-جَلْ-لِـييي.',
+                        maddDetails: [
+                            '«كُلِّي / التَّجَلِّي»: إبراز الشدّة على اللام ثم مدّ الياء (3 حركات في الأولى، و5 حركات في الثانية).'
+                        ],
+                        pauses: 'وقفة قصيرة بعد «عيني» وبعد «ضميري».',
+                        vocalTip: 'أعطِ كلمة «التَّجَلِّي» رهبة وجمالاً بتخفيض الصوت تدريجياً في الياء الممدودة.'
+                    },
+                    {
+                        id: 'p4_s3',
+                        label: 'المقطع الثالث (الأبيات ٥ - ٦: آنسْتُ في الحيّ ناراً)',
+                        isRefrain: false,
+                        lines: [
+                            'آنَسْتُ فِي الْحَيِّ نَاراً | لَيْلاً فَبَشَّرْتُ أَهْلِي ||',
+                            'قُلْتُ امْكُثُوا فَلَعَلِّي | أَجِدْ هُدَايَ لَعَلِّــــي ~ ||'
+                        ],
+                        segments: [
+                            { text: 'آنَسْتُ فِي الْحَيِّ', beats: 3, pitch: 55, isMadd: true },
+                            { text: 'نَاراً |', beats: 3, pitch: 68, isMadd: true },
+                            { text: 'لَيْلاً فَبَشَّرْتُ', beats: 3, pitch: 75, isMadd: false },
+                            { text: 'أَهْلِي ||', beats: 3.5, pitch: 80, isMadd: true },
+                            { text: 'قُلْتُ امْكُثُوا', beats: 3, pitch: 84, isMadd: true },
+                            { text: 'فَلَعَلِّي |', beats: 3, pitch: 70, isMadd: true },
+                            { text: 'أَجِدْ هُدَايَ', beats: 2.5, pitch: 50, isMadd: true },
+                            { text: 'لَعَلِّــــي ~ ||', beats: 5.5, pitch: 26, isMadd: true }
+                        ],
+                        phonetic: 'آ-نَسْ-تُ فِي الْ-حَيْ-يِ نَا-رَنْ | لَيْ-لَنْ فَ-بَشْ-شَرْ-تُ أَهْ-لِي || قُلْ-تُ امْ-كُ-ثُوا فَ-لَ-عَلْ-لِي | أَ-جِدْ هُ-دَا-يَ لَ-عَلْ-لِـييي.',
+                        maddDetails: [
+                            '«آنَسْتُ»: مدّ بدل بالألف (حركتان) في بداية البيت.',
+                            '«نَاراً / هُدَايَ»: مدّ طبيعي بالألف (حركتان).',
+                            '«لَعَلِّي» (الثانية): مدّ الرجاء (5 حركات) مع تدرج خافض.'
+                        ],
+                        pauses: 'وقفة لطيفة بعد «ناراً» وبعد «فلعلّي» الأولى لتأكيد معنى الترجّي.',
+                        vocalTip: 'أظهر نبرة البشارة والرجاء في «فَبَشَّرْتُ أَهْلِي» و«فَلَعَلِّي أَجِدْ هُدَايَ».'
+                    },
+                    {
+                        id: 'p4_s4',
+                        label: 'المقطع الرابع (الأبيات ٧ - ٨: النداء والوصال)',
+                        isRefrain: false,
+                        lines: [
+                            'دَنَوْتُ مِنْهَا فَكَانَتْ | نَارُ الْمُكَلَّمِ قَبْلِي ||',
+                            'نُودِيتُ مِنْهَا جِهَاراً | رُدُّوا لَيَالِيَ وَصْلِــــي ~ ||'
+                        ],
+                        segments: [
+                            { text: 'دَنَوْتُ مِنْهَا', beats: 2.5, pitch: 58, isMadd: true },
+                            { text: 'فَكَانَتْ |', beats: 2.5, pitch: 68, isMadd: true },
+                            { text: 'نَارُ الْمُكَلَّمِ', beats: 3, pitch: 78, isMadd: true },
+                            { text: 'قَبْلِي ||', beats: 3.5, pitch: 82, isMadd: true },
+                            { text: 'نُودِيتُ مِنْهَا', beats: 3, pitch: 88, isMadd: true },
+                            { text: 'جِهَاراً |', beats: 3, pitch: 74, isMadd: true },
+                            { text: 'رُدُّوا لَيَالِيَ', beats: 3, pitch: 52, isMadd: true },
+                            { text: 'وَصْلِــــي ~ ||', beats: 5.5, pitch: 26, isMadd: true }
+                        ],
+                        phonetic: 'دَ-نَوْ-تُ مِنْ-هَا فَ-كَا-نَتْ | نَا-رُ الْ-مُ-كَلْ-لَ-مِ قَبْ-لِي || نُو-دِي-تُ مِنْ-هَا جِ-هَا-رَنْ | رُدْ-دُوا لَ-يَا-لِ-يَ وَصْ-لِـييي.',
+                        maddDetails: [
+                            '«نُودِيتُ»: مدّ بالواو والياء (حركتان لكل حرف) مع جهر واضح بالصوت.',
+                            '«وَصْلِي»: مدّ الإشباع (5 حركات) في ختام البيت.'
+                        ],
+                        pauses: 'وقفة قصيرة بعد «فكانتْ» وبعد «جهاراً».',
+                        vocalTip: 'ارفع صوتك بوضوح عند «نُودِيتُ مِنْهَا جِهَاراً» لتجسيد معنى النداء، ثم عد إلى الرقة في «رُدُّوا لَيَالِيَ وَصْلِي».'
+                    },
+                    {
+                        id: 'p4_s5',
+                        label: 'المقطع الخامس (الأبيات ٩ - ١٠: ميقات الجمع والهيبة)',
+                        isRefrain: false,
+                        lines: [
+                            'حَتَّى إِذَا مَا تَدَانَى الـ | ـمِيقَاتُ فِي جَمْعِ شَمْلِي ||',
+                            'صَارَتْ جِبَالِيَ دَكّاً | مِنْ هَيْبَةِ الْمُتَجَلِّــــي ~ ||'
+                        ],
+                        segments: [
+                            { text: 'حَتَّى إِذَا مَا', beats: 3, pitch: 60, isMadd: true },
+                            { text: 'تَدَانَى الـ |', beats: 3, pitch: 72, isMadd: true },
+                            { text: 'ـمِيقَاتُ فِي جَمْعِ', beats: 3, pitch: 80, isMadd: true },
+                            { text: 'شَمْلِي ||', beats: 3.5, pitch: 85, isMadd: true },
+                            { text: 'صَارَتْ جِبَالِيَ', beats: 3, pitch: 78, isMadd: true },
+                            { text: 'دَكّاً |', beats: 2.5, pitch: 62, isMadd: false },
+                            { text: 'مِنْ هَيْبَةِ', beats: 2.5, pitch: 45, isMadd: false },
+                            { text: 'الْمُتَجَلِّــــي ~ ||', beats: 5.5, pitch: 25, isMadd: true }
+                        ],
+                        phonetic: 'حَتْ-تَى إِ-ذَا مَا تَ-دَا-نَى الْـ | ـمِي-قَا-تُ فِي جَمْ-عِ شَمْ-لِي || صَا-رَتْ جِ-بَا-لِ-يَ دَكْ-كَنْ | مِنْ هَيْ-بَ-ةِ الْ-مُ-تَ-جَلْ-لِـييي.',
+                        maddDetails: [
+                            '«تَدَانَى الْمِيقَاتُ»: وصل الألف المقصورة بلام التعريف (الـ / ـمِيقَاتُ) دون قطع النفس لترابط المعنى.',
+                            '«الْمُتَجَلِّي»: تشديد اللام مع مدّ الياء (5 حركات) بهيبة ووقار.'
+                        ],
+                        pauses: 'وصل لطيف بين شطري البيت التاسع لارتباط (الـ / ـميقاتُ)، ثم وقفة بعد «دكّاً».',
+                        vocalTip: 'أدِّ كلمة «دَكّاً» بنبرة خاشعة منكسرة، واهبط تدريجياً في «الْمُتَجَلِّي».'
+                    },
+                    {
+                        id: 'p4_s6',
+                        label: 'المقطع السادس (الأبيات ١١ - ١٢: السر الخفي وموسى الزمان)',
+                        isRefrain: false,
+                        lines: [
+                            'وَلَاحَ سِرٌّ خَفِيٌّ | يَدْرِيهِ مَنْ كَانَ مِثْلِي ||',
+                            'وَصِرْتُ مُوسَى زَمَانِي | مُذْ صَارَ بَعْضِيَ عَلِّــــي ~ ||'
+                        ],
+                        segments: [
+                            { text: 'وَلَاحَ سِرٌّ', beats: 2.5, pitch: 55, isMadd: true },
+                            { text: 'خَفِيٌّ |', beats: 2.5, pitch: 66, isMadd: false },
+                            { text: 'يَدْرِيهِ مَنْ كَانَ', beats: 3, pitch: 74, isMadd: true },
+                            { text: 'مِثْلِي ||', beats: 3.5, pitch: 78, isMadd: true },
+                            { text: 'وَصِرْتُ مُوسَى', beats: 3, pitch: 82, isMadd: true },
+                            { text: 'زَمَانِي |', beats: 3, pitch: 68, isMadd: true },
+                            { text: 'مُذْ صَارَ بَعْضِيَ', beats: 3, pitch: 48, isMadd: true },
+                            { text: 'عَلِّــــي ~ ||', beats: 5.5, pitch: 26, isMadd: true }
+                        ],
+                        phonetic: 'وَ-لَا-حَ سِرْ-رُنْ خَ-فِيْ-يُنْ | يَدْ-رِي-هِ مَنْ كَا-نَ مِثْ-لِي || وَ-صِرْ-تُ مُو-سَى زَ-مَا-نِي | مُذْ صَا-رَ بَعْ-ضِ-يَ عَلْ-لِـييي.',
+                        maddDetails: [
+                            '«مُوسَى زَمَانِي»: مدود طبيعية (حركتان لكل ألف وياء).',
+                            '«عَلِّي» (أصلها عليّ خففت للقافية): مدّ الياء (5 حركات).'
+                        ],
+                        pauses: 'وقفة قصيرة بعد «خفيٌّ» وبعد «زماني».',
+                        vocalTip: 'حافظ على صفاء المخارج في «مُذْ صَارَ بَعْضِيَ» مع الانتقال السلس للقفلة.'
+                    },
+                    {
+                        id: 'p4_s7',
+                        label: 'المقطع السابع (الأبيات ١٣ - ١٤: الخاتمة والافتقار)',
+                        isRefrain: false,
+                        lines: [
+                            'فَالْمَوْتُ فِيهِ حَيَاتِي | وَفِي حَيَاتِيَ قَتْلِي ||',
+                            'أَنَا الْفَقِيرُ الْمُعَنَّى | رِقُّوا لِحَالِي وَذُلِّــــي ~ ||'
+                        ],
+                        segments: [
+                            { text: 'فَالْمَوْتُ فِيهِ', beats: 2.5, pitch: 62, isMadd: true },
+                            { text: 'حَيَاتِي |', beats: 3, pitch: 75, isMadd: true },
+                            { text: 'وَفِي حَيَاتِيَ', beats: 3, pitch: 82, isMadd: true },
+                            { text: 'قَتْلِي ||', beats: 3.5, pitch: 72, isMadd: true },
+                            { text: 'أَنَا الْفَقِيرُ', beats: 3, pitch: 60, isMadd: true },
+                            { text: 'الْمُعَنَّى |', beats: 3.5, pitch: 48, isMadd: true },
+                            { text: 'رِقُّوا لِحَالِي', beats: 3, pitch: 35, isMadd: true },
+                            { text: 'وَذُلِّــــي ~ ||', beats: 7, pitch: 22, isMadd: true }
+                        ],
+                        phonetic: 'فَالْ-مَوْ-تُ فِي-هِ حَ-يَا-تِي | وَ-فِي حَ-يَا-تِ-يَ قَتْ-لِي || أَ-نَا الْ-فَ-قِي-رُ الْ-مُ-عَنْ-نَى | رِقْ-قُوا لِ-حَا-لِي وَ-ذُلْ-لِـييييي.',
+                        maddDetails: [
+                            '«الْمُعَنَّى»: مدّ بالألف المقصورة (3-4 حركات) بنبرة انكسار.',
+                            '«وَذُلِّي»: مدّ الختام (6 إلى 7 حركات كاملة) مع تدرج خافض حتى الهمس الوقور.'
+                        ],
+                        pauses: 'وقفة تذلّل بعد «المعنّى» قبل عبارة الرجاء الختامية «رقّوا لحالي وذلّي».',
+                        vocalTip: 'هذا ختام القصيدة؛ اجعله في قمة التواضع والانكسار، واخفض الطبقة تدريجياً في «رِقُّوا لِحَالِي وَذُلِّي» حتى تستقر على أعمق قرار مريح لصوتك.'
+                    }
+                ]
+            }
+        ];
+
+        // Combine Built-in Poems + Custom Saved Poems from localStorage
+        let customPoems = [];
+        try {
+            const savedCustom = localStorage.getItem('mihrab_custom_poems');
+            if (savedCustom) customPoems = JSON.parse(savedCustom);
+        } catch (e) {}
+
+        function getAllPoems() {
+            return [...BUILTIN_POEMS, ...customPoems];
+        }
+
+        // -------------------------------------------------------------------------
+        // C. SMART POEM ANALYZER ENGINE (محلل القصائد الذكي التلقائي)
+        // -------------------------------------------------------------------------
+        let pendingAnalyzedPoem = null;
+
+        function openAnalyzerModal() {
+            document.getElementById('analyzer-result-box').classList.add('hidden');
+            document.getElementById('analyzer-modal').classList.remove('hidden');
+        }
+
+        function closeAnalyzerModal() {
+            document.getElementById('analyzer-modal').classList.add('hidden');
+        }
+
+        function fillSamplePoem() {
+            document.getElementById('new-poem-title').value = 'يا إمام الرسل يا سندي';
+            document.getElementById('new-poem-maqam').value = 'مقام الرست (فخامة وبهجة)';
+            document.getElementById('new-poem-meter').value = 'بحر المديد / إيقاع المصمودي';
+            document.getElementById('new-poem-text').value =
+`يَا إِمَامَ الرُّسْلِ يَا سَنَدِي / أَنْتَ بَابُ اللَّهِ مُعْتَمَدِي
+فَبِدُنْيَايَ وَآخِرَتِي / يَا رَسُولَ اللَّهِ خُذْ بِيَدِي
+مَا رَأَتْ عَيْنٌ وَلَيْسَ تَرَى / مِثْلَ طَهَ فِي الْوَرَى بَشَرَا
+خَيْرُ مَنْ فَوْقَ الثَّرَى أَثَرَا / طَاهِرُ الْأَخْلَاقِ وَالشِّيَمِ`;
+        }
+
+        // Detects Arabic Madd letters (ا, و, ي, ى, آ) and estimates rhythmic beats
+        function analyzeWordForMadd(word, isEndOfSadr, isEndOfAruz) {
+            const clean = word.replace(/[\u064B-\u065F\u0670]/g, ''); // strip diacritics to inspect base letters
+            const hasMaddLetter = /[اويىآ]/.test(clean.slice(1)) || clean.startsWith('آ') || clean.startsWith('يَا');
+
+            if (isEndOfAruz) {
+                return { isMadd: true, beats: 6, reason: 'مدّ القافية والختام (6 حركات مع تهدئة واستقرار)' };
+            }
+            if (isEndOfSadr) {
+                return { isMadd: true, beats: 4, reason: 'مدّ نهاية الصدر (4 حركات قبل الوقفة القصيرة)' };
+            }
+            if (hasMaddLetter && clean.length >= 3) {
+                return { isMadd: true, beats: 3, reason: 'مدّ طبيعي بالألف أو الواو أو الياء (حركتان إلى 3 حركات)' };
+            }
+            return { isMadd: false, beats: 2, reason: 'نطق متوازن' };
+        }
+
+        // Inserts visual elongation kashida (ــــ) before the last letter of ending words
+        function decorateEndingWordWithKashida(word) {
+            // Find last base Arabic letter and insert kashida before it for visual guidance
+            const match = word.match(/^(.*?)([ء-ي][\u064B-\u065F\u0670]*)$/);
+            if (match && match[1].length > 1) {
+                return `${match[1]}ــــ${match[2]}`;
+            }
+            return word;
+        }
+
+        function runSmartAnalyzer() {
+            const title = document.getElementById('new-poem-title').value.trim();
+            const maqam = document.getElementById('new-poem-maqam').value;
+            const meter = document.getElementById('new-poem-meter').value.trim() || 'إنشاد موزون';
+            const rawText = document.getElementById('new-poem-text').value.trim();
+
+            if (!title || !rawText) {
+                alert('يرجى إدخال عنوان القصيدة ونص الأبيات أولاً.');
+                return;
+            }
+
+            // Split lines cleanly
+            const rawLines = rawText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+            const stanzas = [];
+
+            rawLines.forEach((line, index) => {
+                // Split into Sadr and Aruz using '/', '*', '...', or 2+ spaces
+                let parts = line.split(/\s*\/\s*|\s*\*\s*|\s{2,}/).map(p => p.trim()).filter(Boolean);
+                let sadr = parts[0] || line;
+                let aruz = parts[1] || '';
+
+                // If user pasted each hemistich on a single line without separator, split words in half
+                if (!aruz) {
+                    const allWords = sadr.split(/\s+/);
+                    if (allWords.length >= 4) {
+                        const mid = Math.ceil(allWords.length / 2);
+                        sadr = allWords.slice(0, mid).join(' ');
+                        aruz = allWords.slice(mid).join(' ');
+                    }
+                }
+
+                const sadrWords = sadr.split(/\s+/).filter(Boolean);
+                const aruzWords = aruz ? aruz.split(/\s+/).filter(Boolean) : [];
+
+                const segments = [];
+                const maddNotes = [];
+
+                // Pitch curve generator: rises across Sadr (45 -> 78), peaks early in Aruz (82), descends to Qarar (26)
+                sadrWords.forEach((w, wIdx) => {
+                    const isLast = wIdx === sadrWords.length - 1;
+                    const analysis = analyzeWordForMadd(w, isLast, false);
+                    const displayW = isLast ? decorateEndingWordWithKashida(w) + ' |' : w;
+                    const progress = sadrWords.length > 1 ? wIdx / (sadrWords.length - 1) : 0.5;
+                    const pitch = Math.round(45 + progress * 32);
+
+                    segments.push({
+                        text: displayW,
+                        beats: analysis.beats,
+                        pitch: pitch,
+                        isMadd: analysis.isMadd
+                    });
+
+                    if (analysis.isMadd) {
+                        maddNotes.push(`«${w}»: ${analysis.reason}.`);
+                    }
+                });
+
+                aruzWords.forEach((w, wIdx) => {
+                    const isLast = wIdx === aruzWords.length - 1;
+                    const analysis = analyzeWordForMadd(w, false, isLast);
+                    const displayW = isLast ? decorateEndingWordWithKashida(w) + ' ~ ||' : w;
+                    const progress = aruzWords.length > 1 ? wIdx / (aruzWords.length - 1) : 1;
+                    const pitch = Math.round(82 - progress * 56); // descends smoothly to 26
+
+                    segments.push({
+                        text: displayW,
+                        beats: analysis.beats,
+                        pitch: pitch,
+                        isMadd: analysis.isMadd
+                    });
+
+                    if (analysis.isMadd) {
+                        maddNotes.push(`«${w}»: ${analysis.reason}.`);
+                    }
+                });
+
+                const formattedSadr = sadrWords.map((w, i) => i === sadrWords.length - 1 ? decorateEndingWordWithKashida(w) : w).join(' ');
+                const formattedAruz = aruzWords.length > 0
+                    ? aruzWords.map((w, i) => i === aruzWords.length - 1 ? decorateEndingWordWithKashida(w) : w).join(' ')
+                    : '';
+
+                const formattedLine = formattedAruz
+                    ? `${formattedSadr} | ${formattedAruz} ~ ||`
+                    : `${formattedSadr} ~ ||`;
+
+                // Build syllable/phonetic guide
+                const phoneticGuide = segments
+                    .map(s => s.text.replace(/[|~]/g, '').trim() + (s.beats >= 4 ? ` [مدّ ${s.beats} حركات]` : ''))
+                    .join(' — ');
+
+                stanzas.push({
+                    id: `custom_${Date.now()}_${index}`,
+                    label: `البيت (${index + 1})`,
+                    isRefrain: false,
+                    lines: [formattedLine],
+                    segments: segments,
+                    phonetic: phoneticGuide,
+                    maddDetails: maddNotes.length > 0 ? maddNotes : ['مدّ عارض للسكون في نهاية البيت (4 - 6 حركات).'],
+                    pauses: 'وقفة قصيرة (|) في نهاية الشطر الأول لخطف النفس، ووقفة تامة (||) مع تهدئة صوتية في قفلة البيت.',
+                    vocalTip: `ابدأ الشطر الأول من الطبقة الوسطى في ${maqam.split('(')[0].trim()}، واصعد تدريجياً نحو الجواب في مطلع الشطر الثاني، ثم اهبط بسكينة إلى القرار في القافية.`
+                });
+            });
+
+            pendingAnalyzedPoem = {
+                id: `custom_poem_${Date.now()}`,
+                isCustom: true,
+                tabTitle: `${getAllPoems().length + 1}. ${title.slice(0, 22)}${title.length > 22 ? '...' : ''}`,
+                fullTitle: `قصيدة: ${title}`,
+                type: `قصيدة مضافة (${stanzas.length} أبيات)`,
+                maqam: maqam,
+                meter: meter,
+                intro: 'تم تحليل هذه القصيدة تلقائياً بواسطة محرك التحليل الصوتي والعروضي لضبط مواضع المدود والوقفات والمنحنى اللحني.',
+                stanzas: stanzas
+            };
+
+            // Show confirmation prompt and preview
+            document.getElementById('analyzed-stanza-count').textContent = stanzas.length;
+            const previewList = document.getElementById('analyzer-preview-list');
+            previewList.innerHTML = stanzas.map(st => `
+                <div class="bg-white p-3 rounded-xl border border-stone-200 text-center">
+                    <div class="text-[11px] font-cairo font-bold text-emerald-800 mb-1">${st.label}</div>
+                    <div class="poetry-font text-lg font-bold text-stone-900">${formatPoetrySymbols(st.lines[0])}</div>
+                </div>
+            `).join('');
+
+            document.getElementById('analyzer-result-box').classList.remove('hidden');
+        }
+
+        function saveAnalyzedPoemToSite() {
+            if (!pendingAnalyzedPoem) return;
+            customPoems.push(pendingAnalyzedPoem);
+            try {
+                localStorage.setItem('mihrab_custom_poems', JSON.stringify(customPoems));
+            } catch (e) {}
+
+            const newIndex = getAllPoems().length - 1;
+            pendingAnalyzedPoem = null;
+            closeAnalyzerModal();
+            selectPoem(newIndex);
+        }
+
+        function deleteCurrentCustomPoem() {
+            const all = getAllPoems();
+            const current = all[currentPoemIndex];
+            if (!current || !current.isCustom) return;
+
+            customPoems = customPoems.filter(p => p.id !== current.id);
+            try {
+                localStorage.setItem('mihrab_custom_poems', JSON.stringify(customPoems));
+            } catch (e) {}
+
+            selectPoem(0);
+        }
+
+        // Export standalone HTML file containing updated poems & password for free hosting
+        function downloadUpdatedHTML() {
+            const creds = getStoredAuth();
+            let docHTML = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+            // Inject updated credentials and customPoems into the exported file
+            docHTML = docHTML.replace(
+                /const DEFAULT_AUTH = \{[\s\S]*?\};/,
+                `const DEFAULT_AUTH = ${JSON.stringify(creds, null, 12)};`
+            );
+            docHTML = docHTML.replace(
+                /let customPoems = \[\];/,
+                `let customPoems = ${JSON.stringify(customPoems)};`
+            );
+
+            const blob = new Blob([docHTML], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // -------------------------------------------------------------------------
+        // D. APPLICATION STATE & WEB AUDIO API ENGINE
+        // -------------------------------------------------------------------------
+        let currentPoemIndex = 0;
+        let tempoMultiplier = 0.65;
+        let soundEnabled = true;
+        let detailsVisible = true;
+
+        let activeStanzaId = null;
+        let isPlayingFullPoem = false;
+        let fullPoemQueueIndex = 0;
+        let animationFrameId = null;
+        let playbackStartTime = 0;
+        let lastTriggeredBeat = -1;
+        let lastTriggeredSegmentIndex = -1;
+        let audioCtx = null;
+
+        function initAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContextClass();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playGuideTone(pitchPercent, isMadd, durationSec) {
+            if (!soundEnabled) return;
+            try {
+                initAudioContext();
+                const now = audioCtx.currentTime;
+                const maqamScale = [146.83, 160.0, 174.61, 196.00, 220.00, 233.08, 261.63, 293.66];
+                const normalized = Math.max(0, Math.min(1, (pitchPercent - 20) / 70));
+                const noteIndex = Math.min(maqamScale.length - 1, Math.floor(normalized * maqamScale.length));
+                const freq = maqamScale[noteIndex];
+
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = isMadd ? 'sine' : 'triangle';
+                osc.frequency.setValueAtTime(freq, now);
+
+                const playDur = Math.min(durationSec * 0.9, isMadd ? 1.8 : 0.6);
+                gain.gain.setValueAtTime(0.001, now);
+                gain.gain.exponentialRampToValueAtTime(isMadd ? 0.11 : 0.08, now + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + playDur);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start(now);
+                osc.stop(now + playDur + 0.02);
+            } catch (e) {}
+        }
+
+        function playBeatPulse(isStrongBeat) {
+            if (!soundEnabled) return;
+            try {
+                initAudioContext();
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(isStrongBeat ? 880 : 587.33, now);
+
+                gain.gain.setValueAtTime(0.001, now);
+                gain.gain.exponentialRampToValueAtTime(isStrongBeat ? 0.045 : 0.025, now + 0.01);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.07);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start(now);
+                osc.stop(now + 0.08);
+            } catch (e) {}
+        }
+
+        // -------------------------------------------------------------------------
+        // E. UI RENDERING & SVG PITCH CONTOUR GENERATOR
+        // -------------------------------------------------------------------------
+        function renderTabs() {
+            const allPoems = getAllPoems();
+            const tabsContainer = document.getElementById('poem-tabs');
+            tabsContainer.innerHTML = allPoems.map((poem, idx) => {
+                const isActive = idx === currentPoemIndex;
+                return `
+                    <button onclick="selectPoem(${idx})"
+                        class="text-right p-3.5 rounded-2xl border-2 transition-all duration-200 flex items-center justify-between gap-2 ${
+                            isActive
+                                ? 'bg-emerald-900 text-white border-amber-500 shadow-md transform -translate-y-0.5'
+                                : 'bg-white text-stone-700 border-stone-200 hover:border-emerald-400 hover:bg-emerald-50/40'
+                        }">
+                        <div class="min-w-0">
+                            <div class="font-cairo font-bold text-sm truncate">${poem.tabTitle}</div>
+                            <div class="text-xs mt-0.5 truncate ${isActive ? 'text-emerald-200' : 'text-stone-500'}">${poem.type}</div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
+                            isActive ? 'bg-amber-500 text-emerald-950' : 'bg-stone-100 text-stone-400'
+                        }">
+                            <i class="fa-solid ${isActive ? 'fa-volume-high' : 'fa-chevron-left'} text-xs"></i>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function formatPoetrySymbols(line) {
+            return line
+                .replace(/\|\|/g, '<span class="pause-full" title="وقفة تامة وتنفس">||</span>')
+                .replace(/\|/g, '<span class="pause-short" title="وقفة قصيرة"> | </span>')
+                .replace(/~/g, '<span class="calm-down" title="تدرج صوتي وتهدئة">~ تهدئة</span>')
+                .replace(/([^\s|<]*ــــ+[^\s|<]*)/g, '<span class="madd-highlight" title="موضع مدّ وإشباع">$1</span>');
+        }
+
+        function buildPitchChartSVG(stanza) {
+            const totalBeats = stanza.segments.reduce((acc, s) => acc + s.beats, 0);
+            const width = 900;
+            const height = 135;
+            const padX = 24;
+            const padY = 22;
+            const usableW = width - padX * 2;
+            const usableH = height - padY * 2;
+
+            let accumulatedBeats = 0;
+            const points = [];
+            let highlightZonesSVG = '';
+            let labelsSVG = '';
+
+            stanza.segments.forEach((seg) => {
+                const startRatio = accumulatedBeats / totalBeats;
+                const endRatio = (accumulatedBeats + seg.beats) / totalBeats;
+                const midRatio = (startRatio + endRatio) / 2;
+
+                const xStart = width - padX - startRatio * usableW;
+                const xEnd = width - padX - endRatio * usableW;
+                const xMid = width - padX - midRatio * usableW;
+                const y = padY + usableH - ((seg.pitch - 15) / 80) * usableH;
+
+                points.push({ x: xMid, y, seg, xStart, xEnd });
+
+                if (seg.isMadd) {
+                    const rectX = Math.min(xStart, xEnd);
+                    const rectW = Math.abs(xStart - xEnd);
+                    highlightZonesSVG += `
+                        <rect x="${rectX}" y="12" width="${rectW}" height="${height - 28}" rx="6"
+                              fill="${seg.beats >= 4.5 ? 'rgba(217, 119, 6, 0.14)' : 'rgba(16, 185, 129, 0.10)'}"
+                              stroke="${seg.beats >= 4.5 ? 'rgba(217, 119, 6, 0.35)' : 'rgba(16, 185, 129, 0.25)'}"
+                              stroke-dasharray="3,3" />
+                    `;
+                }
+
+                const cleanWord = seg.text.replace(/[|~]/g, '').trim();
+                labelsSVG += `
+                    <text x="${xMid}" y="${height - 4}" text-anchor="middle" fill="#44403c" font-family="Amiri, serif" font-size="13" font-weight="bold">
+                        ${cleanWord}
+                    </text>
+                `;
+
+                accumulatedBeats += seg.beats;
+            });
+
+            let pathD = '';
+            if (points.length > 0) {
+                pathD = `M ${points[0].xStart} ${points[0].y} L ${points[0].x} ${points[0].y} `;
+                for (let i = 0; i < points.length - 1; i++) {
+                    const curr = points[i];
+                    const next = points[i + 1];
+                    const ctrlX = (curr.x + next.x) / 2;
+                    pathD += `C ${ctrlX} ${curr.y}, ${ctrlX} ${next.y}, ${next.x} ${next.y} `;
+                }
+                const last = points[points.length - 1];
+                pathD += `L ${last.xEnd} ${last.y}`;
+            }
+
+            const areaD = points.length > 0
+                ? `${pathD} L ${points[points.length - 1].xEnd} ${height - 18} L ${points[0].xStart} ${height - 18} Z`
+                : '';
+
+            const nodesSVG = points.map(p => `
+                <circle cx="${p.x}" cy="${p.y}" r="${p.seg.isMadd ? 5.5 : 3.8}"
+                        fill="${p.seg.beats >= 4.5 ? '#d97706' : (p.seg.isMadd ? '#059669' : '#0284c7')}"
+                        stroke="#ffffff" stroke-width="1.5" />
+                ${p.seg.beats >= 4 ? `<text x="${p.x}" y="${p.y - 9}" text-anchor="middle" fill="#b45309" font-family="Cairo, sans-serif" font-size="9.5" font-weight="bold">مدّ ${Math.round(p.seg.beats)} حركات</text>` : ''}
+            `).join('');
+
+            return `
+                <div class="relative w-full bg-stone-50/90 rounded-xl border border-stone-200 p-2 overflow-hidden">
+                    <div class="flex items-center justify-between text-[11px] text-stone-500 px-2 mb-1 font-cairo">
+                        <span><i class="fa-solid fa-wave-square text-emerald-700 ml-1"></i> الشارت الصوتي ومسار الطبقة (العُرَب والمدود)</span>
+                        <div class="flex items-center gap-3">
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-600 inline-block"></span> جواب / مدّ طويل</span>
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-600 inline-block"></span> مدّ متوسط</span>
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-sky-600 inline-block"></span> قرار / تهدئة</span>
+                        </div>
+                    </div>
+                    <svg viewBox="0 0 ${width} ${height}" class="w-full h-32 sm:h-36 select-none" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="grad_${stanza.id}" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#059669" stop-opacity="0.25" />
+                                <stop offset="100%" stop-color="#d97706" stop-opacity="0.02" />
+                            </linearGradient>
+                        </defs>
+                        <line x1="${padX}" y1="24" x2="${width - padX}" y2="24" stroke="#e7e5e4" stroke-dasharray="4,4" />
+                        <text x="${width - padX + 4}" y="27" font-size="9" fill="#a8a29e" font-family="Cairo">جواب</text>
+                        
+                        <line x1="${padX}" y1="68" x2="${width - padX}" y2="68" stroke="#e7e5e4" stroke-dasharray="4,4" />
+                        <text x="${width - padX + 4}" y="71" font-size="9" fill="#a8a29e" font-family="Cairo">وسط</text>
+
+                        <line x1="${padX}" y1="112" x2="${width - padX}" y2="112" stroke="#e7e5e4" stroke-dasharray="4,4" />
+                        <text x="${width - padX + 4}" y="115" font-size="9" fill="#a8a29e" font-family="Cairo">قرار</text>
+
+                        ${highlightZonesSVG}
+                        <path d="${areaD}" fill="url(#grad_${stanza.id})" />
+                        <path d="${pathD}" fill="none" stroke="#065f46" stroke-width="2.8" stroke-linecap="round" />
+                        ${nodesSVG}
+                        <line id="playhead_${stanza.id}" x1="${width - padX}" y1="8" x2="${width - padX}" y2="${height - 16}"
+                              stroke="#e11d48" stroke-width="2.5" stroke-linecap="round" opacity="0" />
+                        ${labelsSVG}
+                    </svg>
+                </div>
+            `;
+        }
+
+        function renderCurrentPoem() {
+            const allPoems = getAllPoems();
+            if (currentPoemIndex >= allPoems.length) currentPoemIndex = 0;
+            const poem = allPoems[currentPoemIndex];
+
+            document.getElementById('poem-badge').textContent = poem.type;
+            document.getElementById('poem-maqam').innerHTML = `<i class="fa-solid fa-music ml-1"></i> ${poem.maqam}`;
+            document.getElementById('poem-meter').innerHTML = `<i class="fa-solid fa-drum ml-1"></i> ${poem.meter}`;
+            document.getElementById('poem-title').textContent = poem.fullTitle;
+            document.getElementById('poem-intro').textContent = poem.intro;
+            document.getElementById('print-poem-subtitle').textContent = `${poem.fullTitle} — ${poem.maqam}`;
+
+            const delBtn = document.getElementById('delete-custom-poem-btn');
+            if (poem.isCustom) {
+                delBtn.classList.remove('hidden');
+            } else {
+                delBtn.classList.add('hidden');
+            }
+
+            const container = document.getElementById('stanzas-container');
+            container.innerHTML = poem.stanzas.map((stanza, sIdx) => {
+                const totalBeats = Math.round(stanza.segments.reduce((sum, seg) => sum + seg.beats, 0));
+
+                const formattedLinesHTML = stanza.lines.map(line => `
+                    <div class="poetry-font text-2xl sm:text-3xl font-bold text-stone-900 tracking-wide text-center my-1">
+                        ${formatPoetrySymbols(line)}
+                    </div>
+                `).join('');
+
+                const karaokeSegmentsHTML = stanza.segments.map((seg, segIdx) => `
+                    <span id="seg_${stanza.id}_${segIdx}" class="word-segment poetry-font text-lg sm:text-xl text-stone-800 border border-stone-200/80 bg-white">
+                        ${seg.text}
+                        ${seg.isMadd ? `<span class="block text-[10px] font-cairo text-amber-700 font-bold leading-none mt-0.5">${seg.beats} حركات</span>` : ''}
+                    </span>
+                `).join('');
+
+                const maddListHTML = stanza.maddDetails.map(item => `
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-dot text-amber-600 text-xs mt-1.5 shrink-0"></i>
+                        <span>${item}</span>
+                    </li>
+                `).join('');
+
+                return `
+                    <article id="card_${stanza.id}" class="stanza-card bg-white rounded-3xl shadow-md border ${stanza.isRefrain ? 'border-amber-300 ring-2 ring-amber-100' : 'border-stone-200'} overflow-hidden transition-all">
+                        <div class="bg-gradient-to-l ${stanza.isRefrain ? 'from-amber-50 to-orange-50/40 border-amber-200' : 'from-stone-50 to-white border-stone-100'} px-5 py-3.5 border-b flex flex-wrap items-center justify-between gap-3">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 rounded-xl ${stanza.isRefrain ? 'bg-amber-500 text-white' : 'bg-emerald-800 text-white'} font-cairo font-bold text-sm flex items-center justify-center shadow-sm">
+                                    ${sIdx + 1}
+                                </span>
+                                <div>
+                                    <h3 class="font-cairo font-bold text-base text-stone-800">${stanza.label}</h3>
+                                    <span class="text-xs text-stone-500">إجمالي الزمن الإيقاعي: ~${totalBeats} حركة صوتية</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-2 no-print">
+                                <div id="beat_badge_${stanza.id}" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-cairo font-bold text-xs">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-600 animate-ping"></span>
+                                    <span>حركة: <span id="beat_num_${stanza.id}">1</span> / ${totalBeats}</span>
+                                </div>
+
+                                <button onclick="toggleStanzaSimulation('${stanza.id}')" id="btn_play_${stanza.id}"
+                                    class="flex items-center gap-2 px-4 py-2 rounded-xl font-cairo font-bold text-xs sm:text-sm bg-emerald-800 hover:bg-emerald-700 text-white shadow transition transform active:scale-95">
+                                    <i class="fa-solid fa-play"></i>
+                                    <span>تشغيل المحاكاة الإنشادية</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="p-5 sm:p-6 space-y-5">
+                            <div class="bg-amber-50/30 rounded-2xl p-4 sm:p-5 border border-amber-200/50">
+                                ${formattedLinesHTML}
+                            </div>
+
+                            <div class="no-print">
+                                <div class="text-xs font-cairo font-bold text-stone-500 mb-2 flex items-center justify-between">
+                                    <span><i class="fa-solid fa-wand-magic-sparkles text-amber-600 ml-1"></i> التتبع المباشر للكلمات وأزمنة المدّ:</span>
+                                </div>
+                                <div class="flex flex-wrap items-center justify-center gap-2 bg-stone-50 p-3 rounded-2xl border border-stone-200/70">
+                                    ${karaokeSegmentsHTML}
+                                </div>
+                            </div>
+
+                            ${buildPitchChartSVG(stanza)}
+
+                            <div class="analysis-drawer ${detailsVisible ? 'block' : 'hidden'} pt-2">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-emerald-50/60 rounded-2xl p-4 border border-emerald-200/80">
+                                        <h4 class="font-cairo font-bold text-sm text-emerald-950 mb-1.5 flex items-center gap-2">
+                                            <i class="fa-solid fa-spell-check text-emerald-700"></i>
+                                            ١. التقطيع النطقي والأدائي (إشباع الحركات)
+                                        </h4>
+                                        <p class="text-sm text-stone-800 leading-relaxed font-medium">
+                                            ${stanza.phonetic}
+                                        </p>
+                                    </div>
+
+                                    <div class="bg-amber-50/70 rounded-2xl p-4 border border-amber-200/80">
+                                        <h4 class="font-cairo font-bold text-sm text-amber-950 mb-1.5 flex items-center gap-2">
+                                            <i class="fa-solid fa-ruler-horizontal text-amber-600"></i>
+                                            ٢. مواضع المدّ وعدد الحركات
+                                        </h4>
+                                        <ul class="text-xs sm:text-sm text-stone-800 space-y-1.5 leading-relaxed">
+                                            ${maddListHTML}
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-sky-50/60 rounded-2xl p-4 border border-sky-200/80">
+                                        <h4 class="font-cairo font-bold text-sm text-sky-950 mb-1.5 flex items-center gap-2">
+                                            <i class="fa-solid fa-lungs text-sky-600"></i>
+                                            ٣. أماكن الوقف والتنفس والتهدئة
+                                        </h4>
+                                        <p class="text-xs sm:text-sm text-stone-800 leading-relaxed">
+                                            ${stanza.pauses}
+                                        </p>
+                                    </div>
+
+                                    <div class="bg-stone-100/90 rounded-2xl p-4 border border-stone-200">
+                                        <h4 class="font-cairo font-bold text-sm text-stone-900 mb-1.5 flex items-center gap-2">
+                                            <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                                            ٤. نصيحة أدائية للمنشد (المقام والطبقة)
+                                        </h4>
+                                        <p class="text-xs sm:text-sm text-stone-800 leading-relaxed">
+                                            ${stanza.vocalTip}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        // -------------------------------------------------------------------------
+        // F. INTERACTIVE SIMULATION LOOP
+        // -------------------------------------------------------------------------
+        function toggleStanzaSimulation(stanzaId) {
+            if (activeStanzaId === stanzaId) {
+                stopAllPlayback();
+                return;
+            }
+            stopAllPlayback();
+            isPlayingFullPoem = false;
+            startStanzaPlayback(stanzaId);
+        }
+
+        function playFullPoem() {
+            stopAllPlayback();
+            isPlayingFullPoem = true;
+            fullPoemQueueIndex = 0;
+            document.getElementById('play-all-btn').classList.add('hidden');
+            document.getElementById('stop-all-btn').classList.remove('hidden');
+            const firstStanza = getAllPoems()[currentPoemIndex].stanzas[0];
+            if (firstStanza) {
+                startStanzaPlayback(firstStanza.id, true);
+            }
+        }
+
+        function startStanzaPlayback(stanzaId, autoScroll = false) {
+            initAudioContext();
+            const poem = getAllPoems()[currentPoemIndex];
+            const stanza = poem.stanzas.find(s => s.id === stanzaId);
+            if (!stanza) return;
+
+            activeStanzaId = stanzaId;
+            playbackStartTime = performance.now();
+            lastTriggeredBeat = -1;
+            lastTriggeredSegmentIndex = -1;
+
+            const btn = document.getElementById(`btn_play_${stanzaId}`);
+            if (btn) {
+                btn.innerHTML = `<i class="fa-solid fa-stop"></i><span>إيقاف المحاكاة</span>`;
+                btn.classList.remove('bg-emerald-800', 'hover:bg-emerald-700');
+                btn.classList.add('bg-rose-600', 'hover:bg-rose-500');
+            }
+
+            const beatBadge = document.getElementById(`beat_badge_${stanzaId}`);
+            if (beatBadge) {
+                beatBadge.classList.remove('hidden');
+                beatBadge.classList.add('flex');
+            }
+
+            const playhead = document.getElementById(`playhead_${stanzaId}`);
+            if (playhead) playhead.setAttribute('opacity', '1');
+
+            const card = document.getElementById(`card_${stanzaId}`);
+            if (card) {
+                card.classList.add('ring-4', 'ring-emerald-400/50');
+                if (autoScroll) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            const msPerBeat = 550 / tempoMultiplier;
+            const totalBeats = stanza.segments.reduce((sum, s) => sum + s.beats, 0);
+            const totalDurationMs = totalBeats * msPerBeat;
+
+            let accBeats = 0;
+            const segmentBounds = stanza.segments.map((seg, idx) => {
+                const startBeat = accBeats;
+                accBeats += seg.beats;
+                return { idx, seg, startBeat, endBeat: accBeats };
+            });
+
+            function step(now) {
+                if (activeStanzaId !== stanzaId) return;
+
+                const elapsedMs = now - playbackStartTime;
+                const progress = Math.min(1, elapsedMs / totalDurationMs);
+                const currentBeatFloat = progress * totalBeats;
+                const currentBeatInt = Math.floor(currentBeatFloat);
+
+                if (currentBeatInt !== lastTriggeredBeat && currentBeatInt < totalBeats) {
+                    lastTriggeredBeat = currentBeatInt;
+                    const beatNumEl = document.getElementById(`beat_num_${stanzaId}`);
+                    if (beatNumEl) beatNumEl.textContent = currentBeatInt + 1;
+                    playBeatPulse(currentBeatInt % 4 === 0);
+                }
+
+                const playheadEl = document.getElementById(`playhead_${stanzaId}`);
+                if (playheadEl) {
+                    const padX = 24;
+                    const width = 900;
+                    const usableW = width - padX * 2;
+                    const currentX = width - padX - progress * usableW;
+                    playheadEl.setAttribute('x1', currentX);
+                    playheadEl.setAttribute('x2', currentX);
+                }
+
+                const activeBound = segmentBounds.find(b => currentBeatFloat >= b.startBeat && currentBeatFloat < b.endBeat);
+                if (activeBound && activeBound.idx !== lastTriggeredSegmentIndex) {
+                    if (lastTriggeredSegmentIndex !== -1) {
+                        const prevEl = document.getElementById(`seg_${stanzaId}_${lastTriggeredSegmentIndex}`);
+                        if (prevEl) prevEl.classList.remove('active-singing', 'active-madd');
+                    }
+
+                    lastTriggeredSegmentIndex = activeBound.idx;
+                    const currEl = document.getElementById(`seg_${stanzaId}_${activeBound.idx}`);
+                    if (currEl) {
+                        currEl.classList.add('active-singing');
+                        if (activeBound.seg.isMadd) currEl.classList.add('active-madd');
+                    }
+
+                    const segDurSec = (activeBound.seg.beats * msPerBeat) / 1000;
+                    playGuideTone(activeBound.seg.pitch, activeBound.seg.isMadd, segDurSec);
+                }
+
+                if (progress < 1) {
+                    animationFrameId = requestAnimationFrame(step);
+                } else {
+                    const wasFullPoem = isPlayingFullPoem;
+                    cleanupStanzaUI(stanzaId);
+                    activeStanzaId = null;
+
+                    if (wasFullPoem) {
+                        fullPoemQueueIndex++;
+                        const nextStanza = getAllPoems()[currentPoemIndex].stanzas[fullPoemQueueIndex];
+                        if (nextStanza) {
+                            setTimeout(() => {
+                                if (isPlayingFullPoem) startStanzaPlayback(nextStanza.id, true);
+                            }, 600);
+                        } else {
+                            stopAllPlayback();
+                        }
+                    }
+                }
+            }
+
+            animationFrameId = requestAnimationFrame(step);
+        }
+
+        function cleanupStanzaUI(stanzaId) {
+            const btn = document.getElementById(`btn_play_${stanzaId}`);
+            if (btn) {
+                btn.innerHTML = `<i class="fa-solid fa-play"></i><span>تشغيل المحاكاة الإنشادية</span>`;
+                btn.classList.remove('bg-rose-600', 'hover:bg-rose-500');
+                btn.classList.add('bg-emerald-800', 'hover:bg-emerald-700');
+            }
+
+            const beatBadge = document.getElementById(`beat_badge_${stanzaId}`);
+            if (beatBadge) {
+                beatBadge.classList.add('hidden');
+                beatBadge.classList.remove('flex');
+            }
+
+            const playhead = document.getElementById(`playhead_${stanzaId}`);
+            if (playhead) playhead.setAttribute('opacity', '0');
+
+            const card = document.getElementById(`card_${stanzaId}`);
+            if (card) card.classList.remove('ring-4', 'ring-emerald-400/50');
+
+            const poem = getAllPoems()[currentPoemIndex];
+            const stanza = poem ? poem.stanzas.find(s => s.id === stanzaId) : null;
+            if (stanza) {
+                stanza.segments.forEach((_, idx) => {
+                    const el = document.getElementById(`seg_${stanzaId}_${idx}`);
+                    if (el) el.classList.remove('active-singing', 'active-madd');
+                });
+            }
+        }
+
+        function stopAllPlayback() {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+            if (activeStanzaId) {
+                cleanupStanzaUI(activeStanzaId);
+                activeStanzaId = null;
+            }
+            isPlayingFullPoem = false;
+            document.getElementById('play-all-btn').classList.remove('hidden');
+            document.getElementById('stop-all-btn').classList.add('hidden');
+        }
+
+        function selectPoem(index) {
+            stopAllPlayback();
+            currentPoemIndex = index;
+            renderTabs();
+            renderCurrentPoem();
+        }
+
+        function setTempo(multiplier) {
+            tempoMultiplier = multiplier;
+            document.querySelectorAll('.speed-btn').forEach(btn => {
+                btn.classList.remove('bg-amber-500', 'text-emerald-950');
+                btn.classList.add('text-emerald-100', 'hover:bg-emerald-800');
+            });
+
+            const activeBtnId = multiplier === 0.65 ? 'speed-slow' : (multiplier === 1.0 ? 'speed-med' : 'speed-fast');
+            const activeBtn = document.getElementById(activeBtnId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-emerald-100', 'hover:bg-emerald-800');
+                activeBtn.classList.add('bg-amber-500', 'text-emerald-950');
+            }
+
+            if (activeStanzaId) {
+                const currentId = activeStanzaId;
+                const wasFull = isPlayingFullPoem;
+                stopAllPlayback();
+                isPlayingFullPoem = wasFull;
+                if (wasFull) {
+                    document.getElementById('play-all-btn').classList.add('hidden');
+                    document.getElementById('stop-all-btn').classList.remove('hidden');
+                }
+                startStanzaPlayback(currentId, false);
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const icon = document.getElementById('sound-icon');
+            const label = document.getElementById('sound-label');
+            const btn = document.getElementById('sound-toggle-btn');
+
+            if (soundEnabled) {
+                initAudioContext();
+                icon.className = 'fa-solid fa-volume-high';
+                label.textContent = 'النغمة: مفعّلة';
+                btn.classList.remove('bg-stone-700', 'text-stone-300');
+                btn.classList.add('bg-emerald-800', 'text-amber-200');
+            } else {
+                icon.className = 'fa-solid fa-volume-xmark';
+                label.textContent = 'النغمة: صامتة';
+                btn.classList.remove('bg-emerald-800', 'text-amber-200');
+                btn.classList.add('bg-stone-700', 'text-stone-300');
+            }
+        }
+
+        function toggleAllDetails() {
+            detailsVisible = !detailsVisible;
+            const label = document.getElementById('details-label');
+            label.textContent = detailsVisible ? 'إخفاء الشروحات' : 'إظهار الشروحات';
+
+            document.querySelectorAll('.analysis-drawer').forEach(drawer => {
+                if (detailsVisible) {
+                    drawer.classList.remove('hidden');
+                    drawer.classList.add('block');
+                } else {
+                    drawer.classList.remove('block');
+                    drawer.classList.add('hidden');
+                }
+            });
+        }
+
+        function printPoemPDF() {
+            stopAllPlayback();
+            document.querySelectorAll('.analysis-drawer').forEach(drawer => {
+                drawer.classList.remove('hidden');
+                drawer.classList.add('block');
+            });
+            window.print();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            checkAuthStatus();
+            renderTabs();
+            renderCurrentPoem();
+        });
+    </script>
+</body>
+</html>
